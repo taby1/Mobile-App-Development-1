@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lecture2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNa-gY-cRy">
+                                <rect key="frame" x="180" y="180" width="240" height="240"/>
+                                <color key="backgroundColor" red="0.46244282938883352" green="1" blue="0.85747120368426755" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Rye-xB-chE"/>
+                                    <constraint firstAttribute="width" constant="240" id="dyz-dY-Ryb"/>
+                                    <constraint firstAttribute="height" constant="128" id="g6F-cd-yCG"/>
+                                    <constraint firstAttribute="width" constant="240" id="o4p-MH-DfS"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Rye-xB-chE"/>
+                                        <exclude reference="dyz-dY-Ryb"/>
+                                        <exclude reference="g6F-cd-yCG"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="dyz-dY-Ryb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Rye-xB-chE"/>
+                                        <exclude reference="g6F-cd-yCG"/>
+                                        <exclude reference="o4p-MH-DfS"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sNa-gY-cRy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1P6-9h-LeT"/>
+                            <constraint firstItem="sNa-gY-cRy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7k7-A4-Cj9"/>
+                            <constraint firstItem="sNa-gY-cRy" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Kvt-if-amQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sNa-gY-cRy" secondAttribute="bottom" id="Riy-CH-lLr"/>
+                            <constraint firstItem="sNa-gY-cRy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="bcV-4w-c9e"/>
+                            <constraint firstItem="sNa-gY-cRy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="h9c-gs-v8I"/>
+                            <constraint firstItem="sNa-gY-cRy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qO6-HJ-BuZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1P6-9h-LeT"/>
+                                <exclude reference="7k7-A4-Cj9"/>
+                                <exclude reference="Kvt-if-amQ"/>
+                                <exclude reference="bcV-4w-c9e"/>
+                                <exclude reference="h9c-gs-v8I"/>
+                                <exclude reference="qO6-HJ-BuZ"/>
+                                <exclude reference="Riy-CH-lLr"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="sNa-gY-cRy"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="7k7-A4-Cj9"/>
+                                <include reference="bcV-4w-c9e"/>
+                                <include reference="qO6-HJ-BuZ"/>
+                                <include reference="Riy-CH-lLr"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="sNa-gY-cRy"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1P6-9h-LeT"/>
+                                <include reference="Kvt-if-amQ"/>
+                                <include reference="h9c-gs-v8I"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="315" y="438"/>
+        </scene>
+    </scenes>
+</document>
