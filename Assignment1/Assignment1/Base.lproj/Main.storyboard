@@ -101,8 +101,7 @@
                                                                 <include reference="5tl-ai-t27"/>
                                                             </mask>
                                                         </variation>
-                                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
-                                                            <rect key="frame" x="355" y="0.0" width="50" height="0.0"/>
+                                                        <variation key="heightClass=compact-widthClass=regular">
                                                             <mask key="constraints">
                                                                 <include reference="GVM-dE-AsR"/>
                                                             </mask>
@@ -318,8 +317,7 @@
                                                                 <include reference="4yr-tp-V2N"/>
                                                             </mask>
                                                         </variation>
-                                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
-                                                            <rect key="frame" x="355" y="166" width="50" height="0.0"/>
+                                                        <variation key="heightClass=compact-widthClass=regular">
                                                             <mask key="constraints">
                                                                 <include reference="SDF-yO-cRT"/>
                                                             </mask>
