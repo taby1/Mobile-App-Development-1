@@ -8,11 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainController: UIViewController {
 
-    @IBAction func buttonClicked(sender: AnyObject) {
-        print("We were clicked")
-    }
+    
     @IBOutlet weak var textView: UITextView!
     
     
@@ -25,7 +23,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func buttonClicked(sender: AnyObject) {
+        print("We were clicked")
+    }
 
 }
 

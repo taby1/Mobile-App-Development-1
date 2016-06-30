@@ -288,6 +288,7 @@
 				0C19FDE71D247881001F5724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
