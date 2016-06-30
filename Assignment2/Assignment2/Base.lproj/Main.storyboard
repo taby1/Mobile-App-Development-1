@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--MainController-->
@@ -121,7 +122,36 @@
                         <subviews>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDq-K9-EaT">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lVR-hr-ucE">
+                                        <rect key="frame" x="56" y="226" width="448" height="84"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nd-Lw-Itc">
+                                                <rect key="frame" x="209" y="0.0" width="30" height="30"/>
+                                                <state key="normal" title="Run"/>
+                                                <connections>
+                                                    <action selector="buttonClicked:" destination="xsF-XQ-2g0" eventType="touchUpInside" id="h3A-OB-tkm"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="heya wld" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uUa-Yj-g7r">
+                                                <rect key="frame" x="0.0" y="30" width="448" height="54"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="uUa-Yj-g7r" firstAttribute="width" secondItem="lVR-hr-ucE" secondAttribute="width" id="E1L-lJ-Swe"/>
+                                            <constraint firstAttribute="height" constant="84" id="gS0-LY-Zfm"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.012395695688582564" green="1" blue="0.068773689582744435" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lVR-hr-ucE" firstAttribute="centerY" secondItem="zDq-K9-EaT" secondAttribute="centerY" id="4c9-bN-Ojf"/>
+                                    <constraint firstItem="lVR-hr-ucE" firstAttribute="centerX" secondItem="zDq-K9-EaT" secondAttribute="centerX" id="O05-6R-Sqg"/>
+                                    <constraint firstItem="lVR-hr-ucE" firstAttribute="width" secondItem="zDq-K9-EaT" secondAttribute="width" multiplier="0.8" id="QHB-IX-Ys4"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,6 +179,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tQz-Mc-2rC">
+                                <rect key="frame" x="60" y="258" width="480" height="84"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDH-FB-IYF">
+                                        <rect key="frame" x="225" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="Run"/>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="heya wld" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jdf-Fu-O4B">
+                                        <rect key="frame" x="0.0" y="30" width="480" height="54"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="UEX-ar-w7v"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="84" id="Z9p-By-kIr"/>
+                                    <constraint firstItem="jdf-Fu-O4B" firstAttribute="width" secondItem="tQz-Mc-2rC" secondAttribute="width" id="xNX-fY-1f6"/>
+                                </constraints>
+                            </stackView>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6r-X3-3rq">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <color key="backgroundColor" red="1" green="0.95267657735232592" blue="0.055430252672430624" alpha="1" colorSpace="calibratedRGB"/>
@@ -158,8 +208,11 @@
                         <constraints>
                             <constraint firstItem="i6r-X3-3rq" firstAttribute="leading" secondItem="be7-8W-9nF" secondAttribute="leadingMargin" id="Boc-PM-qLa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="i6r-X3-3rq" secondAttribute="trailing" id="OAY-MD-p5h"/>
+                            <constraint firstItem="tQz-Mc-2rC" firstAttribute="width" secondItem="be7-8W-9nF" secondAttribute="width" multiplier="0.8" id="XCT-EG-Rdt"/>
                             <constraint firstItem="s2B-Lx-KOw" firstAttribute="top" secondItem="i6r-X3-3rq" secondAttribute="bottom" id="gCA-oL-UwB"/>
                             <constraint firstItem="i6r-X3-3rq" firstAttribute="top" secondItem="04B-St-MVh" secondAttribute="bottom" id="juJ-k2-Ct6"/>
+                            <constraint firstItem="tQz-Mc-2rC" firstAttribute="centerY" secondItem="be7-8W-9nF" secondAttribute="centerY" id="pu8-Dy-Pbc"/>
+                            <constraint firstItem="tQz-Mc-2rC" firstAttribute="centerX" secondItem="be7-8W-9nF" secondAttribute="centerX" id="qH2-Z9-j9Z"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -179,6 +232,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qiE-wP-diP">
+                                <rect key="frame" x="76" y="258" width="448" height="84"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6v-eH-Gfx">
+                                        <rect key="frame" x="209" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="Run"/>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="heya wld" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="leT-zo-Pi8">
+                                        <rect key="frame" x="0.0" y="30" width="448" height="54"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="OAM-ZU-X1C"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="84" id="WuW-1p-ncb"/>
+                                    <constraint firstItem="leT-zo-Pi8" firstAttribute="width" secondItem="qiE-wP-diP" secondAttribute="width" id="mx1-BT-l1u"/>
+                                </constraints>
+                            </stackView>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56C-kr-b1B">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <color key="backgroundColor" red="0.13583992735720174" green="0.1646207570192767" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -186,10 +259,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qiE-wP-diP" firstAttribute="centerX" secondItem="s1z-29-KlJ" secondAttribute="centerX" id="0nP-7t-Xr9"/>
                             <constraint firstItem="56C-kr-b1B" firstAttribute="top" secondItem="3ZO-SX-7o0" secondAttribute="bottom" id="AHz-jw-Lsv"/>
                             <constraint firstItem="56C-kr-b1B" firstAttribute="leading" secondItem="s1z-29-KlJ" secondAttribute="leadingMargin" id="Gp7-x7-7N2"/>
                             <constraint firstItem="pYr-GP-g09" firstAttribute="top" secondItem="56C-kr-b1B" secondAttribute="bottom" id="JJt-sz-nof"/>
+                            <constraint firstItem="qiE-wP-diP" firstAttribute="centerY" secondItem="s1z-29-KlJ" secondAttribute="centerY" id="Y9F-pM-Woc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="56C-kr-b1B" secondAttribute="trailing" id="cFj-YW-z3N"/>
+                            <constraint firstItem="qiE-wP-diP" firstAttribute="width" secondItem="56C-kr-b1B" secondAttribute="width" multiplier="0.8" id="iSP-vY-HzY"/>
                         </constraints>
                     </view>
                 </viewController>
