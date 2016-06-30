@@ -118,7 +118,19 @@
                     <view key="view" contentMode="scaleToFill" id="9Ln-2h-UHf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDq-K9-EaT">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <color key="backgroundColor" red="0.012395695688582564" green="1" blue="0.068773689582744435" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zDq-K9-EaT" firstAttribute="leading" secondItem="9Ln-2h-UHf" secondAttribute="leadingMargin" id="I1E-rv-cMQ"/>
+                            <constraint firstItem="DeP-FZ-HvP" firstAttribute="top" secondItem="zDq-K9-EaT" secondAttribute="bottom" id="Om3-Eg-rZO"/>
+                            <constraint firstItem="zDq-K9-EaT" firstAttribute="top" secondItem="EjP-fd-mxD" secondAttribute="bottom" id="raU-BH-5d3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zDq-K9-EaT" secondAttribute="trailing" id="utM-Ie-PDD"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXX-oD-pnq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,7 +148,19 @@
                     <view key="view" contentMode="scaleToFill" id="be7-8W-9nF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6r-X3-3rq">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <color key="backgroundColor" red="1" green="0.95267657735232592" blue="0.055430252672430624" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i6r-X3-3rq" firstAttribute="leading" secondItem="be7-8W-9nF" secondAttribute="leadingMargin" id="Boc-PM-qLa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="i6r-X3-3rq" secondAttribute="trailing" id="OAY-MD-p5h"/>
+                            <constraint firstItem="s2B-Lx-KOw" firstAttribute="top" secondItem="i6r-X3-3rq" secondAttribute="bottom" id="gCA-oL-UwB"/>
+                            <constraint firstItem="i6r-X3-3rq" firstAttribute="top" secondItem="04B-St-MVh" secondAttribute="bottom" id="juJ-k2-Ct6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGB-sO-RHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -154,7 +178,19 @@
                     <view key="view" contentMode="scaleToFill" id="s1z-29-KlJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56C-kr-b1B">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <color key="backgroundColor" red="0.13583992735720174" green="0.1646207570192767" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="56C-kr-b1B" firstAttribute="top" secondItem="3ZO-SX-7o0" secondAttribute="bottom" id="AHz-jw-Lsv"/>
+                            <constraint firstItem="56C-kr-b1B" firstAttribute="leading" secondItem="s1z-29-KlJ" secondAttribute="leadingMargin" id="Gp7-x7-7N2"/>
+                            <constraint firstItem="pYr-GP-g09" firstAttribute="top" secondItem="56C-kr-b1B" secondAttribute="bottom" id="JJt-sz-nof"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="56C-kr-b1B" secondAttribute="trailing" id="cFj-YW-z3N"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wd-Sn-jtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
