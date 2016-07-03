@@ -133,7 +133,7 @@
                                                     <action selector="buttonPushed:" destination="xsF-XQ-2g0" eventType="touchUpInside" id="e9d-ll-LZg"/>
                                                 </connections>
                                             </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="heya wld" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-P7-RZG">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="heya wld" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-P7-RZG">
                                                 <rect key="frame" x="0.0" y="30" width="448" height="54"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

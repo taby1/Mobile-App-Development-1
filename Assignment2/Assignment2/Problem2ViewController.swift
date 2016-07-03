@@ -19,7 +19,83 @@ class Problem2ViewController: UIViewController {
     
     @IBAction func buttonPushed(sender: AnyObject) {
         print("Heya")
-        textField.text = "Pushed!"
+        let arraySizeY = 10 //In the event I want to change the size (which I suspect will happen at some point)
+        let arraySizeX = 10
+//        textField.text = "Pushed!"    //placeholder
+        //Initializing and counting before:[[Bool]]
+        var before:[[Bool]] = []
+        for i in 0..<arraySizeY{
+            before.append([])
+            for _ in 0..<arraySizeX{
+                if arc4random_uniform(3) == 1{
+                    before[i].append(true)
+                }
+                else{
+                    before[i].append(false)
+                }
+            }
+        }
+        var count = 0
+        for i in 0..<arraySizeY{
+            for j in 0..<arraySizeX{
+                if before[i][j] {
+                    count += 1
+                }
+            }
+        }
+        print(count)
+        textField.text = "\(count)"
+        //Running the first generation
+        var after:[[Bool]] = []
+        for i in 0..<arraySizeY{    //initialize after[] to be full of 'falses'
+            after.append([])
+            for _ in 0..<arraySizeX{
+                after[i].append(false)
+            }
+        }
+        var afterCount = 0
+        for i in 0..<arraySizeY{
+            for j in 0..<arraySizeX{
+                var coords = (x:0, y:0) //'cause I don't want no enums
+                coords.y = i + arraySizeY
+                coords.x = j + arraySizeX   //I want to do some fancy stuff with modulo.
+                var toCheck = neighbors(coords)
+                var aliveNeighbors = 0
+                for k in 0..<8{ //does wrapping logic
+                    toCheck[k].x = toCheck[k].x%arraySizeX  //doing fancy stuff with modulo
+                    toCheck[k].y = toCheck[k].y%arraySizeY
+                    if(before[toCheck[k].y][toCheck[k].x]) {
+                        aliveNeighbors += 1
+                    }
+                }
+                switch aliveNeighbors{
+                case 0,1:
+                    after[coords.y][coords.x] = false
+                case 2:
+                    if before[coords.y][coords.x]{
+                        after[coords.y][coords.x] = true
+                    }
+                case 3:
+                    after[coords.y][coords.x] = true
+                case 4,5,6,7,8:
+                    after[coords.y][coords.x] = false
+                }
+            }
+        }
+        print(afterCount)
+        textField.text = "\(afterCount)"
+    }
+    func neighbors(coordinates:(x:Int, y:Int)) -> [(x:Int,y:Int)] {
+        var output:[(x:Int,y:Int)] = []
+        output.append((coordinates.x+1,coordinates.y))
+        output.append((coordinates.x+1,coordinates.y+1))
+        output.append((coordinates.x,coordinates.y+1))
+        output.append((coordinates.x-1,coordinates.y+1))
+        output.append((coordinates.x-1,coordinates.y))
+        output.append((coordinates.x-1,coordinates.y-1))
+        output.append((coordinates.x,coordinates.y+1))
+        output.append((coordinates.x+1,coordinates.y-1))
+        return output
     }
     @IBOutlet weak var textField: UITextView!
 }
