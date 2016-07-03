@@ -22,6 +22,8 @@ class Problem3ViewController: UIViewController {
     }
     
     @IBAction func buttonPushed(sender: AnyObject) {
+        print("pushed!")
+        textField.text = "Pushed!"
     }
     
     @IBOutlet weak var textField: UITextView!
