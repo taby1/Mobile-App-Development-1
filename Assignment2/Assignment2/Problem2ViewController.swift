@@ -21,5 +21,11 @@ class Problem2ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func buttonClicked(sender: AnyObject) {
+        
+    }
     
+    @IBAction func buttonPushed(sender: AnyObject) {
+    }
+    @IBOutlet weak var textField: UITextView!
 }

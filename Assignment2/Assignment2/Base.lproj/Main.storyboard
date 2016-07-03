@@ -131,6 +131,7 @@
                                                 <state key="normal" title="Run"/>
                                                 <connections>
                                                     <action selector="buttonClicked:" destination="xsF-XQ-2g0" eventType="touchUpInside" id="h3A-OB-tkm"/>
+                                                    <action selector="buttonPushed:" destination="xsF-XQ-2g0" eventType="touchUpInside" id="eCt-LG-mLM"/>
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="heya wld" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uUa-Yj-g7r">
@@ -162,6 +163,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="zDq-K9-EaT" secondAttribute="trailing" id="utM-Ie-PDD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="uUa-Yj-g7r" id="47c-Vg-b6Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXX-oD-pnq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,6 +189,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDH-FB-IYF">
                                         <rect key="frame" x="225" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="Run"/>
+                                        <connections>
+                                            <action selector="buttonPushed:" destination="sS0-XQ-OSp" eventType="touchUpInside" id="BEX-BV-Ct6"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="heya wld" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jdf-Fu-O4B">
                                         <rect key="frame" x="0.0" y="30" width="480" height="54"/>
@@ -215,6 +222,9 @@
                             <constraint firstItem="tQz-Mc-2rC" firstAttribute="centerX" secondItem="be7-8W-9nF" secondAttribute="centerX" id="qH2-Z9-j9Z"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="jdf-Fu-O4B" id="z5k-IZ-Dt9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGB-sO-RHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,6 +248,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6v-eH-Gfx">
                                         <rect key="frame" x="209" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="Run"/>
+                                        <connections>
+                                            <action selector="buttonPushed:" destination="R3n-M6-O3T" eventType="touchUpInside" id="NMi-az-e4h"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="heya wld" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="leT-zo-Pi8">
                                         <rect key="frame" x="0.0" y="30" width="448" height="54"/>
@@ -268,6 +281,9 @@
                             <constraint firstItem="qiE-wP-diP" firstAttribute="width" secondItem="56C-kr-b1B" secondAttribute="width" multiplier="0.8" id="iSP-vY-HzY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="leT-zo-Pi8" id="mMG-7v-hHB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wd-Sn-jtg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
