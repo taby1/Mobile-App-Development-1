@@ -54,7 +54,7 @@ class Problem2ViewController: UIViewController {
             }
         }
         var afterCount = 0
-        for i in 0..<arraySizeY{
+        for i in 0..<arraySizeY{    //step through 1 generation
             for j in 0..<arraySizeX{
                 var coords = (x:0, y:0) //'cause I don't want no enums
                 coords.y = i + arraySizeY
@@ -62,12 +62,14 @@ class Problem2ViewController: UIViewController {
                 var toCheck = neighbors(coords)
                 var aliveNeighbors = 0
                 for k in 0..<8{ //does wrapping logic
-                    toCheck[k].x = toCheck[k].x%arraySizeX  //doing fancy stuff with modulo
+                    toCheck[k].x = toCheck[k].x%arraySizeX  //doing fancy stuff with modulo - wrapping logic
                     toCheck[k].y = toCheck[k].y%arraySizeY
                     if(before[toCheck[k].y][toCheck[k].x]) {
                         aliveNeighbors += 1
                     }
                 }
+                coords.x = coords.x%arraySizeX
+                coords.y = coords.y%arraySizeY
                 switch aliveNeighbors{
                 case 0,1:
                     after[coords.y][coords.x] = false
@@ -79,11 +81,20 @@ class Problem2ViewController: UIViewController {
                     after[coords.y][coords.x] = true
                 case 4,5,6,7,8:
                     after[coords.y][coords.x] = false
+                default:
+                    break
+                }
+            }
+        }
+        for i in 0..<arraySizeY{    //count live cells after a generation
+            for j in 0..<arraySizeX{
+                if after[i][j] {
+                    afterCount += 1
                 }
             }
         }
         print(afterCount)
-        textField.text = "\(afterCount)"
+        textField.text = "\(afterCount) currently alive"
     }
     func neighbors(coordinates:(x:Int, y:Int)) -> [(x:Int,y:Int)] {
         var output:[(x:Int,y:Int)] = []
