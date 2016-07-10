@@ -89,15 +89,24 @@ enum CellState:String{
         gridPath.stroke()
         
         
-        let cellPaths = UIBezierPath()
+        var cellPaths = UIBezierPath()
         cellPaths.lineWidth = CGFloat(0)
         for i in 0..<rows{
             for j in 0..<cols{
-                cellPaths.appendPath(UIBezierPath(ovalInRect: cells[i][j]))
+                cellPaths = (UIBezierPath(ovalInRect: cells[i][j]))
+                switch grid[i][j]{
+                case .Empty:
+                    emptyColor.setFill()
+                case .Born:
+                    bornColor.setFill()
+                case .Died:
+                    diedColor.setFill()
+                case .Living:
+                    livingColor.setFill()
+                }
+                cellPaths.fill()
             }
         }
-        emptyColor.setFill()
-        cellPaths.fill()
     }
 }
 
