@@ -58,21 +58,21 @@ enum CellState:String{
     var grid:[[CellState]]!
     
     func initCells() {
-        cells = [[CGRect!]](count: rows, repeatedValue:[CGRect!](count:cols, repeatedValue:nil))
+        cells = [[(rect:CGRect!, touchState:Bool)]](count: rows, repeatedValue:[(rect:CGRect!, touchState:Bool)](count:cols, repeatedValue:(nil, false)))
         for i in 0..<rows{
             for j in 0..<cols{
                 let width = (bounds.width / CGFloat(cols)) - (gridWidth + (gridWidth / CGFloat(cols)))
                 let height = (bounds.height / CGFloat(rows)) - (1 * gridWidth)
                 let x = CGFloat(j) * ((bounds.width - (CGFloat(cols + 1) * gridWidth)) / CGFloat(cols)) + (gridWidth * (CGFloat(j) + 1))   //Oh god jesus christ don't ask me about this
                 let y = CGFloat(i) * ((bounds.height - (CGFloat(rows + 1) * gridWidth)) / CGFloat(rows)) + (gridWidth * (CGFloat(i) + 1))   //Oh god jesus christ don't ask me about this
-                cells[i][j] = CGRect(x: x, y: y, width: width, height: height)
+                cells[i][j].rect = CGRect(x: x, y: y, width: width, height: height)
             }
         }
     }
-    var cells:[[CGRect!]] = []/* = [[CGRect!]](count: rows, repeatedValue:[CGRect!](count:cols, repeatedValue:nil))*/  //I get a funny feeling like this'll be useful later for touch detection as it is my understanding that checking for touches in individual rectanges is easy and this way I can just iterate through an array checking for touches
+    var cells:[[(rect:CGRect!, touchState:Bool)]] = []/* = [[CGRect!]](count: rows, repeatedValue:[CGRect!](count:cols, repeatedValue:nil))*/  //I get a funny feeling like this'll be useful later for touch detection as it is my understanding that checking for touches in individual rectanges is easy and this way I can just iterate through an array checking for touches
     
     override func drawRect(rect: CGRect) {
-        
+        initCells()
         let gridPath = UIBezierPath()
         gridPath.lineWidth = gridWidth
         for i in 0..<cols + 1{
@@ -93,7 +93,7 @@ enum CellState:String{
         cellPaths.lineWidth = CGFloat(0)
         for i in 0..<rows{
             for j in 0..<cols{
-                cellPaths = (UIBezierPath(ovalInRect: cells[i][j]))
+                cellPaths = (UIBezierPath(ovalInRect: cells[i][j].rect))
                 switch grid[i][j]{
                 case .Empty:
                     emptyColor.setFill()
@@ -105,6 +105,51 @@ enum CellState:String{
                     livingColor.setFill()
                 }
                 cellPaths.fill()
+            }
+        }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches{
+            self.manageTouchToggle(touch)
+        }
+    }
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches{
+            self.manageTouch(touch)
+        }
+    }
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        for touch in touches{
+//            self.manageTouchToggle(touch)
+//        }
+    }
+    func manageTouchToggle(touch: UITouch){
+        for i in 0..<rows{
+            for j in 0..<cols{
+                if CGRectContainsPoint(cells[i][j].rect, touch.locationInView(self)){
+                    grid[i][j] = grid[i][j].toggle(grid[i][j])
+                    setNeedsDisplayInRect(cells[i][j].rect)
+                    cells[i][j].touchState = false
+                }
+            }
+        }
+    }
+    func manageTouch(touch: UITouch){
+        for i in 0..<rows{
+            for j in 0..<cols{
+                if CGRectContainsPoint(cells[i][j].rect, touch.locationInView(self)){
+                    if !cells[i][j].touchState{
+                        cells[i][j].touchState = true
+                    }
+                }
+                else{
+                    if cells[i][j].touchState{
+                        grid[i][j] = grid[i][j].toggle(grid[i][j])
+                        setNeedsDisplayInRect(cells[i][j].rect)
+                        cells[i][j].touchState = false
+                    }
+                }
             }
         }
     }

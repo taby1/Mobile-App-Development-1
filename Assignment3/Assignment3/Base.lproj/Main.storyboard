@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,9 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2w-jx-3fk" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
-                                <rect key="frame" x="69" y="84" width="474" height="346"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2w-jx-3fk" customClass="GridView" customModule="Assignment3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="b2w-jx-3fk" secondAttribute="height" multiplier="1:1" id="97e-w7-24X"/>
+                                    <constraint firstAttribute="width" secondItem="b2w-jx-3fk" secondAttribute="height" multiplier="1:1" id="Q29-ay-TqV"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rows">
                                         <integer key="value" value="20"/>
@@ -49,6 +54,11 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b2w-jx-3fk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2Jk-hI-dnp"/>
+                            <constraint firstItem="b2w-jx-3fk" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="BxN-2m-Bfm"/>
+                            <constraint firstItem="b2w-jx-3fk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RIc-Yd-G0R"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
