@@ -8,26 +8,7 @@
 
 import Foundation
 
-enum CellState:String{
-    case Living = "Living"
-    case Empty = "Empty"
-    case Born = "Born"
-    case Died = "Died"
-    func description() -> String{
-        return self.rawValue
-    }
-    func allValues() -> [CellState]{
-        return [CellState.Living,CellState.Empty,CellState.Born,CellState.Died]
-    }
-    func toggle(value:CellState) -> CellState {
-        switch value {
-        case .Living, .Born:
-            return .Empty
-        case .Empty,.Died:
-            return .Living
-        }
-    }
-}
+
 
 
 
