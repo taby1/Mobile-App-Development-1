@@ -23,8 +23,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ptl-0r-Z6m">
                                 <rect key="frame" x="20" y="20" width="560" height="580"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2w-jx-3fk" customClass="GridView" customModule="Assignment3">
-                                        <rect key="frame" x="15" y="0.0" width="530" height="530"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2w-jx-3fk" customClass="GridView" customModule="Assignment3">
+                                        <rect key="frame" x="56" y="0.0" width="448" height="448"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="b2w-jx-3fk" secondAttribute="height" multiplier="1:1" id="Q29-ay-TqV"/>
@@ -56,8 +56,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhE-td-AEV">
-                                        <rect key="frame" x="264" y="540" width="32" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhE-td-AEV">
+                                        <rect key="frame" x="264" y="499" width="32" height="30"/>
                                         <state key="normal" title="Step"/>
                                         <connections>
                                             <action selector="stepButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QoF-VW-Xkd"/>
