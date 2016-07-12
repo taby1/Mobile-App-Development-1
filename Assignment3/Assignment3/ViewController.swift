@@ -39,9 +39,11 @@ class ViewController: UIViewController {
             for j in 0..<lifeGrid.cols{
                 switch tempState[i][j]{
                 case true:
-                    lifeGrid.grid[i][j] = .Living
+//                    lifeGrid.grid[i][j] = .Living
+                    lifeGrid.setGrid(x: j, y: i, state: .Living)
                 default:
-                    lifeGrid.grid[i][j] = .Empty
+//                    lifeGrid.grid[i][j] = .Empty
+                    lifeGrid.setGrid(x: j, y: i, state: .Empty)
                 }
             }
         }

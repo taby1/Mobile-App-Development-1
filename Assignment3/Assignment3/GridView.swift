@@ -14,6 +14,7 @@ import UIKit
         didSet{
             initCells()
             grid = [[CellState]](count: rows, repeatedValue:[CellState](count: cols, repeatedValue: .Empty))
+            redrawGrid = true
             self.setNeedsDisplay()
         }
     }
@@ -21,6 +22,7 @@ import UIKit
         didSet{
             initCells()
             grid = [[CellState]](count: rows, repeatedValue:[CellState](count: cols, repeatedValue: .Empty))
+            redrawGrid = true
             self.setNeedsDisplay()
         }
     }
@@ -34,11 +36,15 @@ import UIKit
             initCells()
         }
     }
-    var grid:[[CellState]]!{
-        didSet{
-            self.setNeedsDisplay()
+    var grid:[[CellState]]!
+    func setGrid(x column:Int, y row:Int, state:CellState){
+        if grid[row][column] != state{
+            grid[row][column] = state
+            redrawGrid = true   //needsDisplayInRect optimizes to combine nearby rectangles, so the grid lines gradually get phased out of existence unless they're redrawn
+            self.setNeedsDisplayInRect(cells[row][column].rect)
         }
     }
+    var redrawGrid:Bool = false
     
     func initCells() {
         cells = [[(rect:CGRect!, touchState:Bool)]](count: rows, repeatedValue:[(rect:CGRect!, touchState:Bool)](count:cols, repeatedValue:(nil, false)))
@@ -55,21 +61,24 @@ import UIKit
     var cells:[[(rect:CGRect!, touchState:Bool)]] = []/* = [[CGRect!]](count: rows, repeatedValue:[CGRect!](count:cols, repeatedValue:nil))*/  //I get a funny feeling like this'll be useful later for touch detection as it is my understanding that checking for touches in individual rectanges is easy and this way I can just iterate through an array checking for touches
     
     override func drawRect(rect: CGRect) {
-        initCells()
-        let gridPath = UIBezierPath()
-        gridPath.lineWidth = gridWidth
-        for i in 0..<cols + 1{
-            let xPos:CGFloat = (CGFloat(CGFloat(i) * (bounds.width / CGFloat(cols)))) * ((bounds.width - gridWidth) / bounds.width) + gridWidth / 2     //Slight scale and translate so the gridlines don't get clipped off the edge
-            gridPath.moveToPoint(CGPoint(x: xPos, y: 0))
-            gridPath.addLineToPoint(CGPoint(x: xPos, y: bounds.height))
+        if redrawGrid{
+            initCells()
+            let gridPath = UIBezierPath()
+            gridPath.lineWidth = gridWidth
+            for i in 0..<cols + 1{
+                let xPos:CGFloat = (CGFloat(CGFloat(i) * (bounds.width / CGFloat(cols)))) * ((bounds.width - gridWidth) / bounds.width) + gridWidth / 2     //Slight scale and translate so the gridlines don't get clipped off the edge
+                gridPath.moveToPoint(CGPoint(x: xPos, y: 0))
+                gridPath.addLineToPoint(CGPoint(x: xPos, y: bounds.height))
+            }
+            for i in 0..<rows + 1{
+                let yPos:CGFloat = (CGFloat(CGFloat(i) * (bounds.height / CGFloat(rows)))) * ((bounds.height - gridWidth) / bounds.height) + gridWidth / 2     //Slight scale and translate so the gridlines don't get clipped off the edge
+                gridPath.moveToPoint(CGPoint(x: 0, y: yPos))
+                gridPath.addLineToPoint(CGPoint(x: bounds.width, y: yPos))
+            }
+            gridColor.setStroke()
+            gridPath.stroke()
+            redrawGrid = false
         }
-        for i in 0..<rows + 1{
-            let yPos:CGFloat = (CGFloat(CGFloat(i) * (bounds.height / CGFloat(rows)))) * ((bounds.height - gridWidth) / bounds.height) + gridWidth / 2     //Slight scale and translate so the gridlines don't get clipped off the edge
-            gridPath.moveToPoint(CGPoint(x: 0, y: yPos))
-            gridPath.addLineToPoint(CGPoint(x: bounds.width, y: yPos))
-        }
-        gridColor.setStroke()
-        gridPath.stroke()
         
         
         var cellPaths = UIBezierPath()
@@ -94,7 +103,6 @@ import UIKit
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches{
-            //            self.manageTouchToggle(touch)
             self.manageTouch(touch)
         }
     }
@@ -104,9 +112,6 @@ import UIKit
         }
     }
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        //        for touch in touches{
-        //            self.manageTouchToggle(touch)
-        //        }
         for touch in touches{
             self.manageTouchToggle(touch)
         }
