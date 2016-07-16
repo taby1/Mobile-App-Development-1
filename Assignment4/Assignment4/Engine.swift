@@ -8,69 +8,76 @@
 
 import Foundation
 
-
-func step2(arrayIn:[[Bool]]) -> [[Bool]] {
-    let ySize = arrayIn.count
-    let xSize = arrayIn[0].count
-    var after:[[Bool]] = []
-    for i in 0..<ySize{    //initialize after[] to be full of 'falses'
-        after.append([])
-        for _ in 0..<xSize{
-            after[i].append(false)
+class Engine:EngineProtocol{
+    var delegate: EngineDelegate
+    var _grid:GridProtocol = Grid(rows: rows, cols: cols){
+        didSet{
+            delegate.engineDidUpdate(self._grid)
         }
     }
-    for i in 0..<ySize{    //step through 1 generation
-        for j in 0..<xSize{
-            var coords = (x:0, y:0) //'cause I don't want no enums
-            coords.y = i + ySize
-            coords.x = j + xSize
-            
-            var toCheck = neighbors(coords, sizeX: xSize, sizeY: ySize) //takes size constraints so can be used with arbitrarily sized arrays
-            var aliveNeighbors = 0
-            for k in 0..<8{ //counts number of living neighbors
-                if(arrayIn[toCheck[k].y][toCheck[k].x]) {
-                    aliveNeighbors += 1
+    var grid: GridProtocol{
+        get{
+            return _grid
+        }
+    }
+    var refreshRate: Double = 0
+    var refreshTimer: NSTimer
+    var _rows:Int
+    var _cols:Int
+    var rows: Int{
+        get{
+            return _rows
+        }set{
+            _rows = newValue
+        }
+    }
+    var cols: Int{
+        get{
+            return _cols
+        }set{
+            _cols = newValue
+        }
+    }
+    required init(rows: Int, cols: Int) {
+        _rows = rows
+        _cols = cols
+    }
+    func step() -> GridProtocol {
+        var output:GridProtocol = Grid(rows: rows, cols: cols)
+        for i in 0..<rows{    //step through 1 generation
+            for j in 0..<cols{
+                var coords = (col:0, row:0) //'cause I don't want no enums
+                coords.row = i + rows
+                coords.col = j + cols
+                
+                var toCheck = self.grid.neighbors(coords)
+                var aliveNeighbors = 0
+                for k in 0..<8{ //counts number of living neighbors
+                    if(grid[toCheck[k].row,toCheck[k].col] == (.Alive || .Born)) {
+                        aliveNeighbors += 1
+                    }
+                }
+                coords.row = coords.row%rows
+                coords.col = coords.col%cols
+                
+                switch aliveNeighbors{
+                case 0,1:
+                    output[coords.row,coords.col] = .Empty
+                case 2:
+                    output[coords.row][coords.col] = arrayIn[coords.row][coords.col]
+                case 3:
+                    output[coords.row][coords.col] = true
+                case 4,5,6,7,8:
+                    output[coords.row][coords.col] = false
+                default:
+                    output[coords.row][coords.col] = false
                 }
             }
-            coords.y = coords.y%ySize
-            coords.x = coords.x%xSize
-            
-            switch aliveNeighbors{
-            case 0,1:
-                after[coords.y][coords.x] = false
-            case 2:
-                after[coords.y][coords.x] = arrayIn[coords.y][coords.x]
-            case 3:
-                after[coords.y][coords.x] = true
-            case 4,5,6,7,8:
-                after[coords.y][coords.x] = false
-            default:
-                after[coords.y][coords.x] = false
+        }
+        for i in 0..<rows{
+            for j in 0..<cols{
+                _grid[row:i, col:j] = output[i,j]
             }
         }
     }
-    return after
-}
-
-func neighbors(coordinates:(x:Int, y:Int), sizeX:Int, sizeY:Int) -> [(x:Int,y:Int)]{    //In case you're pedantic; takes size constraints so can be used with arbitrarily sized arrays
-    var around = simpleNeighbors(coordinates)
-    for i in 0..<8 {
-        around[i].x = around[i].x%sizeX  //doing fancy stuff with modulo - wrapping logic
-        around[i].y = around[i].y%sizeY
-    }
-    return around
-}
-
-
-func simpleNeighbors(coordinates:(x:Int, y:Int)) -> [(x:Int,y:Int)] { //You see, I had already made this function in problem 2 because it's a reasonable thing to do
-    var output:[(x:Int,y:Int)] = []
-    output.append((coordinates.x+1,coordinates.y))
-    output.append((coordinates.x+1,coordinates.y+1))
-    output.append((coordinates.x,coordinates.y+1))
-    output.append((coordinates.x-1,coordinates.y+1))
-    output.append((coordinates.x-1,coordinates.y))
-    output.append((coordinates.x-1,coordinates.y-1))
-    output.append((coordinates.x,coordinates.y-1))
-    output.append((coordinates.x+1,coordinates.y-1))
-    return output
 }
