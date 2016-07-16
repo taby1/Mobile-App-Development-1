@@ -10,5 +10,24 @@ import Foundation
 
 
 protocol GridProtocol{
-    
+    init(rows:Int, cols:Int)
+    var rows:Int {get}
+    var cols:Int {get}
+    func neighbors(coordinates:(row:Int, col:Int)) -> [(row:Int,col:Int)]
+    subscript(row: Int, col:Int) -> CellState { get set }
+}
+
+protocol EngineDelegate{
+    func engineDidUpdate(withGrid:GridProtocol)
+}
+
+protocol EngineProtocol{
+    var delegate:EngineDelegate{get set}
+    var grid:GridProtocol{ get}
+    var refreshRate:Double {get set}
+    var refreshTimer:NSTimer {get set}
+    var rows:Int {get set}
+    var cols:Int {get set}
+    init(rows:Int, cols:Int)
+    func step() -> GridProtocol
 }
