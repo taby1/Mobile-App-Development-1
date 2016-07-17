@@ -13,8 +13,6 @@ class SimulationViewController: UIViewController, EngineDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-		lifeGrid.grid = Grid(rows: lifeEngine.rows, cols: lifeEngine.cols)
-		lifeEngine.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,9 +21,7 @@ class SimulationViewController: UIViewController, EngineDelegate{
     }
 
 	func engineDidUpdate(withGrid: GridProtocol) {
-		lifeGrid.grid = withGrid
+//		lifeGrid.grid = withGrid
 	}
-	var lifeEngine = StandardEngine(rows: 20, cols: 20)
-	@IBOutlet weak var lifeGrid: GridView!
 }
 

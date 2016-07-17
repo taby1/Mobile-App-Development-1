@@ -22,7 +22,7 @@ protocol EngineDelegate{
 }
 
 protocol EngineProtocol{
-    var delegate:EngineDelegate? {get set}
+    var delegate:EngineDelegate{get set}
     var grid:GridProtocol{ get}
     var refreshRate:Double {get set}
     var refreshTimer:NSTimer {get set}

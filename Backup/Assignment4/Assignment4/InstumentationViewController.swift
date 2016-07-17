@@ -1,5 +1,5 @@
 //
-//  SimulationViewController.swift
+//  InstrumentationViewController.swift
 //  Assignment4
 //
 //  Created by Patrick on 7/14/16.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController, EngineDelegate{
+class InstrumentationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-		lifeGrid.grid = Grid(rows: lifeEngine.rows, cols: lifeEngine.cols)
-		lifeEngine.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,10 +20,6 @@ class SimulationViewController: UIViewController, EngineDelegate{
         // Dispose of any resources that can be recreated.
     }
 
-	func engineDidUpdate(withGrid: GridProtocol) {
-		lifeGrid.grid = withGrid
-	}
-	var lifeEngine = StandardEngine(rows: 20, cols: 20)
-	@IBOutlet weak var lifeGrid: GridView!
+
 }
 

@@ -15,12 +15,10 @@ class StandardEngine:EngineProtocol{
 			return _engine
 		}
 	}
-    var delegate: EngineDelegate?
+    var delegate: EngineDelegate
 	var _grid:GridProtocol! = nil{
         didSet{
-			if let delegate = delegate{
-				delegate.engineDidUpdate(self._grid)
-			}
+            delegate.engineDidUpdate(self._grid)
 			let center = NSNotificationCenter.defaultCenter()
 			let n = NSNotification(name: "GridUpdate", object: nil, userInfo: ["hey":"name"])
 			center.postNotification(n)
@@ -39,12 +37,12 @@ class StandardEngine:EngineProtocol{
 //		}
 //	}
 	var refreshTimer: NSTimer = NSTimer()
-	private var _rows:Int{
+	var _rows:Int{
 		didSet{
 			self._grid = Grid(rows: rows, cols: cols)
 		}
 	}
-	private var _cols:Int{
+	var _cols:Int{
 		didSet{
 			self._grid = Grid(rows: rows, cols: cols)
 		}
@@ -60,7 +58,6 @@ class StandardEngine:EngineProtocol{
     required init(rows: Int, cols: Int) {
         _rows = rows
         _cols = cols
-		_grid = Grid(rows: _rows, cols: _cols)
     }
     func step() -> GridProtocol {
         var output:GridProtocol = Grid(rows: rows, cols: cols)
@@ -73,7 +70,7 @@ class StandardEngine:EngineProtocol{
                 var toCheck = self.grid.neighbors(coords)
                 var aliveNeighbors = 0
                 for k in 0..<8{ //counts number of living neighbors
-                    if((grid[toCheck[k].row,toCheck[k].col] == .Living) || (grid[toCheck[k].row,toCheck[k].col] == .Born)) {
+                    if(grid[toCheck[k].row,toCheck[k].col] == (.Alive || .Born)) {
                         aliveNeighbors += 1
                     }
                 }
@@ -84,19 +81,19 @@ class StandardEngine:EngineProtocol{
                 case 0,1:
                     output[coords.row,coords.col] = .Empty
                 case 2:
-                    output[coords.row, coords.col] = _grid[coords.row,coords.col]
+                    output[coords.row][coords.col] = arrayIn[coords.row][coords.col]
                 case 3:
-                    output[coords.row, coords.col] = .Living
+                    output[coords.row][coords.col] = true
                 case 4,5,6,7,8:
-                    output[coords.row, coords.col] = .Empty
+                    output[coords.row][coords.col] = false
                 default:
-                    output[coords.row, coords.col] = .Empty
+                    output[coords.row][coords.col] = false
                 }
             }
         }
         for i in 0..<rows{
             for j in 0..<cols{
-                _grid[i, j] = output[i,j]
+                _grid[row:i, col:j] = output[i,j]
             }
         }
         return output
