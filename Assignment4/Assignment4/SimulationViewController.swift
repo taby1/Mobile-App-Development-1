@@ -15,6 +15,7 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
         // Do any additional setup after loading the view, typically from a nib.
 		lifeGrid.grid = Grid(rows: lifeEngine.rows, cols: lifeEngine.cols)
 		lifeEngine.delegate = self
+		lifeGrid.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
