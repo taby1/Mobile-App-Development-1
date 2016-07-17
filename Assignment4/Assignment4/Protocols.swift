@@ -31,3 +31,7 @@ protocol EngineProtocol{
     init(rows:Int, cols:Int)
     func step() -> GridProtocol
 }
+
+protocol GridViewDelegate{	//because I can't think of a way which fits in the bounds of the assignment of changing the EngineProtcol object's grid to reflect changes which originate in gridView, like drawing on the screen
+	func touchChange(row:Int, col:Int, newState:CellState)
+}

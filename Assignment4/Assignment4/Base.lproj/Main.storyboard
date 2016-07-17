@@ -11,7 +11,7 @@
         <!--Instrumentation-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="Instrumentation" id="9pv-A4-QxB" userLabel="Instrumentation" customClass="FirstViewController" customModule="Assignment4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Instrumentation" id="9pv-A4-QxB" userLabel="Instrumentation" customClass="InstrumentationViewController" customModule="Assignment4" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -201,7 +201,7 @@
         <!--Simulation-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SimulationViewController" customModule="Assignment4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="SimulationViewController" customModule="Assignment4" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -264,6 +264,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHB-aj-IKL" userLabel="StepButton">
                                                 <rect key="frame" x="264" y="476" width="32" height="30"/>
                                                 <state key="normal" title="Step"/>
+                                                <connections>
+                                                    <action selector="stepButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="cwd-OF-vyg"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-SE-aQA" userLabel="Spacer">
                                                 <rect key="frame" x="0.0" y="531" width="560" height="0.0"/>

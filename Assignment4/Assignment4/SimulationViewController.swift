@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController, EngineDelegate{
+class SimulationViewController: UIViewController, EngineDelegate, GridViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +21,21 @@ class SimulationViewController: UIViewController, EngineDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	
+	func touchChange(row: Int, col: Int, newState: CellState) {
+		lifeEngine._grid[row,col] = newState
+	}
 
 	func engineDidUpdate(withGrid: GridProtocol) {
 		lifeGrid.grid = withGrid
 	}
 	var lifeEngine = StandardEngine(rows: 20, cols: 20)
+	
 	@IBOutlet weak var lifeGrid: GridView!
+	@IBAction func stepButtonClicked(sender: AnyObject) {
+		
+		lifeEngine.step()
+	}
 }
 
