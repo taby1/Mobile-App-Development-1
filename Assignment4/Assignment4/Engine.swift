@@ -8,35 +8,52 @@
 
 import Foundation
 
-class Engine:EngineProtocol{
+class StandardEngine:EngineProtocol{
+	private static var _engine = StandardEngine(rows: 10, cols: 10)
+	static var engine:StandardEngine{
+		get{
+			return _engine
+		}
+	}
     var delegate: EngineDelegate
-    var _grid:GridProtocol = Grid(rows: rows, cols: cols){
+	var _grid:GridProtocol!{
         didSet{
             delegate.engineDidUpdate(self._grid)
+			let center = NSNotificationCenter.defaultCenter()
+			let n = NSNotification(name: "GridUpdate", object: nil, userInfo: ["NewGrid":self.grid])
+			center.postNotification(n)
         }
     }
     var grid: GridProtocol{
-        get{
-            return _grid
-        }
+        get{return _grid}
     }
-    var refreshRate: Double = 0
-    var refreshTimer: NSTimer
-    var _rows:Int
-    var _cols:Int
+	var refreshRate: Double = 0//{     //WIP
+//		didSet{
+//			if self.refreshRate != 0{
+//				if let refreshTimer = refreshTimer {refreshTimer.invalidate()}
+//				let sel = #selector(StandardEngine.step())
+//				refreshTimer = NSTimer.scheduledTimerWithTimeInterval
+//			}
+//		}
+//	}
+	var refreshTimer: NSTimer = NSTimer
+	var _rows:Int{
+		didSet{
+			self._grid = Grid(rows: rows, cols: cols)
+		}
+	}
+	var _cols:Int{
+		didSet{
+			self._grid = Grid(rows: rows, cols: cols)
+		}
+	}
     var rows: Int{
-        get{
-            return _rows
-        }set{
-            _rows = newValue
-        }
+        get{return _rows}
+		set{_rows = newValue}
     }
     var cols: Int{
-        get{
-            return _cols
-        }set{
-            _cols = newValue
-        }
+        get{return _cols}
+		set{_cols = newValue}
     }
     required init(rows: Int, cols: Int) {
         _rows = rows
@@ -79,5 +96,6 @@ class Engine:EngineProtocol{
                 _grid[row:i, col:j] = output[i,j]
             }
         }
+        return output
     }
 }
