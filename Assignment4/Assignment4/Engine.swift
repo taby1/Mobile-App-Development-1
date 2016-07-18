@@ -18,27 +18,15 @@ class StandardEngine:EngineProtocol{
     var delegate: EngineDelegate?
 	var _grid:GridProtocol! = nil{
         didSet{
-			if let delegate = delegate{
-				delegate.engineDidUpdate(self._grid)
-			}
-			let center = NSNotificationCenter.defaultCenter()
-			let n = NSNotification(name: "GridUpdate", object: nil, userInfo: ["hey":"name"])
-			center.postNotification(n)
+			if let delegate = delegate{ delegate.engineDidUpdate(self._grid)}
+//			NSNotificationCenter.defaultCenter().postNotificationName("GridUpdate", object: nil, userInfo: ["newGrid":self._grid])
         }
     }
     var grid: GridProtocol{
         get{return _grid}
     }
-	var refreshRate: Double = 0//{     //WIP
-//		didSet{
-//			if self.refreshRate != 0{
-//				if let refreshTimer = refreshTimer {refreshTimer.invalidate()}
-//				let sel = #selector(StandardEngine.step())
-//				refreshTimer = NSTimer.scheduledTimerWithTimeInterval
-//			}
-//		}
-//	}
-	var refreshTimer: NSTimer = NSTimer()
+	var refreshRate: Double = 0
+	var refreshTimer: NSTimer = NSTimer()	//Doesn't do anything, as we weren't told to do anything with it
 	private var _rows:Int{
 		didSet{
 			self._grid = Grid(rows: rows, cols: cols)
@@ -108,8 +96,16 @@ class Grid:GridProtocol{
 		_cols = cols
 		_rows = rows
 		grid = [[CellState]](count:rows, repeatedValue:[CellState](count:cols, repeatedValue:.Empty))
+		tempGrid = grid
 	}
-	var grid:[[CellState]]
+	var grid:[[CellState]]//{
+//		willSet{
+//			tempGrid = grid
+//		}didSet{
+//			
+//		}
+//	}
+	private var tempGrid:[[CellState]]
 	private var _rows:Int{
 		didSet{
 			grid = [[CellState]](count:rows, repeatedValue:[CellState](count:cols, repeatedValue:.Empty))
@@ -151,7 +147,7 @@ class Grid:GridProtocol{
 			return grid[row][col]
 		}
 		set{
-			grid[row][col] = newValue
+//			grid[row][col] = newValue
 			switch newValue{
 			case .Empty, .Died:
 				switch grid[row][col]{

@@ -32,14 +32,10 @@ import UIKit
 	@IBInspectable var diedColor:UIColor = UIColor.redColor()
 	@IBInspectable var gridColor:UIColor = UIColor.blackColor()
 	@IBInspectable var gridWidth:CGFloat = CGFloat(1.0){
-		didSet{
-			initCells()
-		}
+		didSet{initCells()}
 	}
 	var grid:GridProtocol! = nil{
-		didSet{
-			self.setNeedsDisplay()
-		}
+		didSet{self.setNeedsDisplay()}
 	}
 	var redrawGrid:Bool = false
 	func initCells() {
@@ -55,7 +51,7 @@ import UIKit
 		}
 	}
 	
-	var cells:[[(rect:CGRect!, touchState:Bool)]] = []/* = [[CGRect!]](count: rows, repeatedValue:[CGRect!](count:cols, repeatedValue:nil))*/  //I get a funny feeling like this'll be useful later for touch detection as it is my understanding that checking for touches in individual rectanges is easy and this way I can just iterate through an array checking for touches
+	var cells:[[(rect:CGRect!, touchState:Bool)]] = []
 	
 	override func drawRect(rect: CGRect) {
 		if redrawGrid{
