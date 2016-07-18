@@ -24,9 +24,11 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
 
 	@IBAction func rowStepper(sender: UIStepper) {
 		lifeEngine.rows = Int(rowStepperOut.value)
+		rowsDisplay.text = "\(lifeEngine.rows)"
 	}
 	@IBAction func columnStepper(sender: AnyObject) {
 		lifeEngine.cols = Int(colStepperOut.value)
+		colsDisplay.text = "\(lifeEngine.cols)"
 	}
 	@IBAction func refreshSlider(sender: AnyObject) {
 	}
@@ -36,5 +38,7 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
 	@IBOutlet weak var colStepperOut: UIStepper!
 	@IBOutlet weak var refreshSliderOut: UISlider!
 	@IBOutlet weak var refreshSwitchOut: UISwitch!
+	@IBOutlet weak var rowsDisplay: UITextField!
+	@IBOutlet weak var colsDisplay: UITextField!
 }
 

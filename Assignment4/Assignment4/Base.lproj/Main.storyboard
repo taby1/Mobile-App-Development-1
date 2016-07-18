@@ -42,10 +42,10 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kyt-Dg-aUK">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kyt-Dg-aUK">
                                                         <rect key="frame" x="0.0" y="31" width="448" height="29"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-8t-ibn">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-8t-ibn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="29"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -80,7 +80,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gaX-p7-SuO">
                                                         <rect key="frame" x="0.0" y="31" width="448" height="29"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-KI-31b">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-KI-31b">
                                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="29"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -184,9 +184,11 @@
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" selectedImage="Instrumentation" id="acW-dT-cKf" userLabel="Instrumentation"/>
                     <connections>
                         <outlet property="colStepperOut" destination="sAe-xF-xpK" id="noZ-oa-16r"/>
+                        <outlet property="colsDisplay" destination="2Wa-KI-31b" id="tp4-iL-73w"/>
                         <outlet property="refreshSliderOut" destination="SiB-pI-Uct" id="dK9-yR-5fd"/>
                         <outlet property="refreshSwitchOut" destination="gzh-yZ-Dw9" id="90p-9c-LF6"/>
                         <outlet property="rowStepperOut" destination="Zqw-mN-MzL" id="eLI-jy-QSM"/>
+                        <outlet property="rowsDisplay" destination="hLE-8t-ibn" id="3Di-28-ZFP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
