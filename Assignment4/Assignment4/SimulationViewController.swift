@@ -14,6 +14,7 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 		lifeGrid.grid = Grid(rows: lifeEngine.rows, cols: lifeEngine.cols)
+		self.dimensionsDidChange(lifeEngine.rows, cols: lifeEngine.cols)
 		lifeEngine.delegate = self
 		lifeGrid.delegate = self
 //		lifeEngine.rows = lifeGrid.rows
@@ -30,6 +31,7 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
 		lifeEngine._grid[row,col] = newState
 	}
 	func engineDidUpdate(withGrid: GridProtocol) {
+		lifeGrid.redrawGrid = true
 		lifeGrid.grid = withGrid
 	}
 	func dimensionsDidChange(rows: Int, cols: Int) {

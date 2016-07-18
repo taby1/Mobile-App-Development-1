@@ -13,6 +13,10 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+		
+		lifeEngine.cols = Int(colStepperOut.value)
+		lifeEngine.rows = Int(rowStepperOut.value)
+
     }
 
     override func didReceiveMemoryWarning() {

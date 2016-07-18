@@ -118,11 +118,11 @@ import UIKit
 		for i in 0..<rows{
 			for j in 0..<cols{
 				if CGRectContainsPoint(cells[i][j].rect, touch.locationInView(self)){
-					grid[i, j] = grid[i, j].toggle(grid[i, j])
+//					grid[i, j] = grid[i, j].toggle(grid[i, j])
 					if let delegate = delegate{
-						delegate.touchChange(i, col: j, newState: grid[i,j])
+						delegate.touchChange(i, col: j, newState: grid[i,j].toggle(grid[i,j]))
 					}
-					setNeedsDisplayInRect(cells[i][j].rect)
+//					setNeedsDisplayInRect(cells[i][j].rect)
 					cells[i][j].touchState = false
 				}
 			}
@@ -138,11 +138,11 @@ import UIKit
 				}
 				else{
 					if cells[i][j].touchState{
-						grid[i, j] = grid[i, j].toggle(grid[i, j])
+//						grid[i, j] = grid[i, j].toggle(grid[i, j])
 						if let delegate = delegate{
-							delegate.touchChange(i, col: j, newState: grid[i,j])
+							delegate.touchChange(i, col: j, newState: grid[i,j].toggle(grid[i,j]))
 						}
-						setNeedsDisplayInRect(cells[i][j].rect)
+//						setNeedsDisplayInRect(cells[i][j].rect)
 						cells[i][j].touchState = false
 					}
 				}

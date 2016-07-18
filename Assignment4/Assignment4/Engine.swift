@@ -9,7 +9,7 @@
 import Foundation
 
 class StandardEngine:EngineProtocol{
-	private static var _engine = StandardEngine(rows: 10, cols: 10)
+	private static var _engine = StandardEngine(rows: 20, cols: 20)
 	static var engine:StandardEngine{
 		get{
 			return _engine
