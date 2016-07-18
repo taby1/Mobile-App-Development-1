@@ -20,13 +20,13 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
         // Dispose of any resources that can be recreated.
     }
 	
-//	var lifeEngine = StandardEngine.engine
+	var lifeEngine = StandardEngine.engine
 
 	@IBAction func rowStepper(sender: UIStepper) {
-//		lifeEngine.rows = Int(rowStepperOut.value)
+		lifeEngine.rows = Int(rowStepperOut.value)
 	}
 	@IBAction func columnStepper(sender: AnyObject) {
-//		lifeEngine.cols = Int(colStepperOut.value)
+		lifeEngine.cols = Int(colStepperOut.value)
 	}
 	@IBAction func refreshSlider(sender: AnyObject) {
 	}

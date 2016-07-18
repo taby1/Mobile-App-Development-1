@@ -47,10 +47,10 @@ class StatisticsViewController: UIViewController {	//Icon from http://www.iconbe
 //		bornLabel.text = "Just Born: \(counts.born)"
 //		diedLabel.text = "Just Died: \(counts.died)"
 //	}
-//	var counts = (empty:0, living:0, born:0, died:0)
-//	@IBOutlet weak var emptyLabel: UILabel!
-//	@IBOutlet weak var livingLabel: UILabel!
-//	@IBOutlet weak var bornLabel: UILabel!
-//	@IBOutlet weak var diedLabel: UILabel!
+	var counts = (empty:0, living:0, born:0, died:0)
+	@IBOutlet weak var emptyLabel: UILabel!
+	@IBOutlet weak var livingLabel: UILabel!
+	@IBOutlet weak var bornLabel: UILabel!
+	@IBOutlet weak var diedLabel: UILabel!
 	
 }

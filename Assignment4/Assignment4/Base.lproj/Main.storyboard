@@ -292,6 +292,12 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Statistics" image="Statistics" selectedImage="Statistics" id="srp-3A-rVT"/>
+                    <connections>
+                        <outlet property="bornLabel" destination="JDx-hB-FTM" id="CeS-ch-C0L"/>
+                        <outlet property="diedLabel" destination="AmG-oL-aqD" id="smC-Q4-0g1"/>
+                        <outlet property="emptyLabel" destination="PQW-am-YoJ" id="X81-kM-6Zc"/>
+                        <outlet property="livingLabel" destination="Rrp-UL-tJU" id="4fZ-q8-1xa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GD4-CV-Apo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,10 +336,10 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="rows">
-                                                                <integer key="value" value="20"/>
+                                                                <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cols">
-                                                                <integer key="value" value="20"/>
+                                                                <integer key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
                                                                 <color key="value" red="0.01239569569" green="1" blue="0.068773689580000005" alpha="1" colorSpace="calibratedRGB"/>

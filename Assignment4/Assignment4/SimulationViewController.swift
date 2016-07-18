@@ -32,8 +32,8 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
 	func engineDidUpdate(withGrid: GridProtocol) {
 		lifeGrid.grid = withGrid
 	}
-	var lifeEngine = StandardEngine(rows: 20, cols: 20)
-//	var lifeEngine = StandardEngine.engine
+//	var lifeEngine = StandardEngine(rows: 20, cols: 20)
+	var lifeEngine = StandardEngine.engine
 	
 	@IBOutlet weak var lifeGrid: GridView!
 	@IBAction func stepButtonClicked(sender: AnyObject) {
