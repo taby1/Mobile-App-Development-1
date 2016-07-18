@@ -32,6 +32,10 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
 	func engineDidUpdate(withGrid: GridProtocol) {
 		lifeGrid.grid = withGrid
 	}
+	func dimensionsDidChange(rows: Int, cols: Int) {
+		lifeGrid.cols = cols
+		lifeGrid.rows = rows
+	}
 //	var lifeEngine = StandardEngine(rows: 20, cols: 20)
 	var lifeEngine = StandardEngine.engine
 	

@@ -35,11 +35,16 @@ import UIKit
 		didSet{initCells()}
 	}
 	var grid:GridProtocol! = nil{
-		didSet{self.setNeedsDisplay()}
+		didSet{
+//			rows = grid.rows
+//			cols = grid.cols
+//			initCells()
+			self.setNeedsDisplay()
+		}
 	}
 	var redrawGrid:Bool = false
 	func initCells() {
-		cells = [[(rect:CGRect!, touchState:Bool)]](count: rows, repeatedValue:[(rect:CGRect!, touchState:Bool)](count:cols, repeatedValue:(nil, false)))
+		self.cells = [[(rect:CGRect!, touchState:Bool)]](count: rows, repeatedValue:[(rect:CGRect!, touchState:Bool)](count:cols, repeatedValue:(nil, false)))
 		for i in 0..<rows{
 			for j in 0..<cols{
 				let width = (bounds.width / CGFloat(cols)) - (gridWidth + (gridWidth / CGFloat(cols)))

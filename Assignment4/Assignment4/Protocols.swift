@@ -19,6 +19,7 @@ protocol GridProtocol{
 
 protocol EngineDelegate{
     func engineDidUpdate(withGrid:GridProtocol)
+	func dimensionsDidChange(rows:Int, cols:Int)
 }
 
 protocol EngineProtocol{

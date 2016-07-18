@@ -30,11 +30,13 @@ class StandardEngine:EngineProtocol{
 	private var _rows:Int{
 		didSet{
 			self._grid = Grid(rows: rows, cols: cols)
+			if let delegate = delegate{ delegate.engineDidUpdate(self._grid); delegate.dimensionsDidChange(rows, cols: cols)}
 		}
 	}
 	private var _cols:Int{
 		didSet{
 			self._grid = Grid(rows: rows, cols: cols)
+			if let delegate = delegate{ delegate.engineDidUpdate(self._grid); delegate.dimensionsDidChange(rows, cols: cols)}
 		}
 	}
     var rows: Int{
