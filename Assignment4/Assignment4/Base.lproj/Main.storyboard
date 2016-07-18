@@ -42,16 +42,23 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kyt-Dg-aUK">
-                                                        <rect key="frame" x="0.0" y="30" width="448" height="30"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="kyt-Dg-aUK">
+                                                        <rect key="frame" x="0.0" y="31" width="448" height="29"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-8t-ibn">
-                                                                <rect key="frame" x="0.0" y="0.0" width="342" height="30"/>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLE-8t-ibn">
+                                                                <rect key="frame" x="0.0" y="0.0" width="342" height="29"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
-                                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zqw-mN-MzL">
+                                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zqw-mN-MzL">
                                                                 <rect key="frame" x="354" y="0.0" width="94" height="29"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="94" id="Kwg-MW-G4d"/>
+                                                                    <constraint firstAttribute="height" constant="29" id="iyU-IS-n3V"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <action selector="rowStepper:" destination="9pv-A4-QxB" eventType="valueChanged" id="7Zw-U2-8qA"/>
+                                                                </connections>
                                                             </stepper>
                                                         </subviews>
                                                     </stackView>
@@ -61,25 +68,32 @@
                                                     <constraint firstItem="kyt-Dg-aUK" firstAttribute="width" secondItem="G59-9Z-jYX" secondAttribute="width" id="jrM-Ga-Agb"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2v5-qc-lyk" userLabel="Columns">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2v5-qc-lyk" userLabel="Columns">
                                                 <rect key="frame" x="56" y="176" width="448" height="60"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fD1-aw-KFy">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fD1-aw-KFy">
                                                         <rect key="frame" x="190" y="0.0" width="68" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gaX-p7-SuO">
-                                                        <rect key="frame" x="0.0" y="30" width="448" height="30"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gaX-p7-SuO">
+                                                        <rect key="frame" x="0.0" y="31" width="448" height="29"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-KI-31b">
-                                                                <rect key="frame" x="0.0" y="0.0" width="342" height="30"/>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-KI-31b">
+                                                                <rect key="frame" x="0.0" y="0.0" width="342" height="29"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
-                                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="sAe-xF-xpK">
+                                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="sAe-xF-xpK">
                                                                 <rect key="frame" x="354" y="0.0" width="94" height="29"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="29" id="Ioz-bn-aIv"/>
+                                                                    <constraint firstAttribute="width" constant="94" id="qbO-MQ-c09"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <action selector="columnStepper:" destination="9pv-A4-QxB" eventType="valueChanged" id="lAz-yI-34G"/>
+                                                                </connections>
                                                             </stepper>
                                                         </subviews>
                                                     </stackView>
@@ -100,6 +114,9 @@
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="SiB-pI-Uct">
                                                         <rect key="frame" x="-2" y="30" width="452" height="31"/>
+                                                        <connections>
+                                                            <action selector="refreshSlider:" destination="9pv-A4-QxB" eventType="valueChanged" id="mEz-xZ-tyw"/>
+                                                        </connections>
                                                     </slider>
                                                 </subviews>
                                                 <constraints>
@@ -118,6 +135,9 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gzh-yZ-Dw9">
                                                         <rect key="frame" x="200" y="29" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="refreshSwitch:" destination="9pv-A4-QxB" eventType="valueChanged" id="Nk3-fE-8I0"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                                 <constraints>
@@ -162,6 +182,12 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" selectedImage="Instrumentation" id="acW-dT-cKf" userLabel="Instrumentation"/>
+                    <connections>
+                        <outlet property="colStepperOut" destination="sAe-xF-xpK" id="noZ-oa-16r"/>
+                        <outlet property="refreshSliderOut" destination="SiB-pI-Uct" id="dK9-yR-5fd"/>
+                        <outlet property="refreshSwitchOut" destination="gzh-yZ-Dw9" id="90p-9c-LF6"/>
+                        <outlet property="rowStepperOut" destination="Zqw-mN-MzL" id="eLI-jy-QSM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,7 +218,7 @@
                                                     <constraint firstAttribute="height" id="V0h-JR-hW0"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQW-am-YoJ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQW-am-YoJ">
                                                 <rect key="frame" x="0.0" y="89" width="448" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="WHb-Ag-pyf"/>

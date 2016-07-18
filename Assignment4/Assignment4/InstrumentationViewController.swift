@@ -22,19 +22,19 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
 	
 //	var lifeEngine = StandardEngine.engine
 
-//	@IBAction func rowStepper(sender: UIStepper) {
-////		lifeEngine.rows = Int(rowStepperOut.value)
-//	}
-//	@IBAction func columnStepper(sender: AnyObject) {
-////		lifeEngine.cols = Int(colStepperOut.value)
-//	}
-//	@IBAction func refreshSlider(sender: AnyObject) {
-//	}
-//	@IBAction func refreshSwitch(sender: AnyObject) {
-//	}
-//	@IBOutlet weak var rowStepperOut: UIStepper!
-//	@IBOutlet weak var colStepperOut: UIStepper!
-//	@IBOutlet weak var refreshSliderOut: UISlider!
-//	@IBOutlet weak var refreshSwitchOut: UISwitch!
+	@IBAction func rowStepper(sender: UIStepper) {
+//		lifeEngine.rows = Int(rowStepperOut.value)
+	}
+	@IBAction func columnStepper(sender: AnyObject) {
+//		lifeEngine.cols = Int(colStepperOut.value)
+	}
+	@IBAction func refreshSlider(sender: AnyObject) {
+	}
+	@IBAction func refreshSwitch(sender: AnyObject) {
+	}
+	@IBOutlet weak var rowStepperOut: UIStepper!
+	@IBOutlet weak var colStepperOut: UIStepper!
+	@IBOutlet weak var refreshSliderOut: UISlider!
+	@IBOutlet weak var refreshSwitchOut: UISwitch!
 }
 
