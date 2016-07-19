@@ -17,20 +17,12 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
 		self.dimensionsDidChange(lifeEngine.rows, cols: lifeEngine.cols)
 		lifeEngine.delegate = self
 		lifeGrid.delegate = self
-//		lifeEngine.rows = lifeGrid.rows
-//		lifeEngine.cols = lifeGrid.cols
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-	
-	var grid: GridProtocol{
-		get{
-			return self.lifeGrid.grid!
-		}
-	}
 	
 	func touchChange(row: Int, col: Int, newState: CellState) {
 		lifeEngine._grid[row,col] = newState
@@ -43,12 +35,10 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
 		lifeGrid.cols = cols
 		lifeGrid.rows = rows
 	}
-//	var lifeEngine = StandardEngine(rows: 20, cols: 20)
-	var lifeEngine = StandardEngine.engine
+	var lifeEngine = StandardEngine.engine	//Getting engine singleton
 	
 	@IBOutlet weak var lifeGrid: GridView!
 	@IBAction func stepButtonClicked(sender: AnyObject) {
-		
 		lifeEngine.step()
 	}
 }

@@ -14,7 +14,7 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 		
-		lifeEngine.cols = Int(colStepperOut.value)
+		lifeEngine.cols = Int(colStepperOut.value)	//Initializing labels and fields to correct value on load
 		lifeEngine.rows = Int(rowStepperOut.value)
 		rowsDisplay.text = "\(lifeEngine.rows)"
 		colsDisplay.text = "\(lifeEngine.cols)"
@@ -42,7 +42,7 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
 	}
 	@IBAction func refreshSwitch(sender: AnyObject) {
 	}
-	@IBOutlet weak var rowStepperOut: UIStepper!
+	@IBOutlet weak var rowStepperOut: UIStepper!	//Objects to retrieve stored values of steppers, etc.
 	@IBOutlet weak var colStepperOut: UIStepper!
 	@IBOutlet weak var refreshSliderOut: UISlider!
 	@IBOutlet weak var refreshSwitchOut: UISwitch!
