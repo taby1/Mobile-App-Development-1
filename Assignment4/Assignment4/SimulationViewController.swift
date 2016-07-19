@@ -26,6 +26,11 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
         // Dispose of any resources that can be recreated.
     }
 	
+	var grid: GridProtocol{
+		get{
+			return self.lifeGrid.grid!
+		}
+	}
 	
 	func touchChange(row: Int, col: Int, newState: CellState) {
 		lifeEngine._grid[row,col] = newState

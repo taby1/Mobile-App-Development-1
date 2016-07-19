@@ -19,7 +19,7 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
 		rowsDisplay.text = "\(lifeEngine.rows)"
 		colsDisplay.text = "\(lifeEngine.cols)"
 		refreshSliderLabel.text = "\(refreshSliderOut.value) Hz"
-
+		
     }
 
     override func didReceiveMemoryWarning() {

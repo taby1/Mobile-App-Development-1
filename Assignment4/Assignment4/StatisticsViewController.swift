@@ -14,12 +14,29 @@ class StatisticsViewController: UIViewController {	//Icon from http://www.iconbe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateHandler(_:)), name: "GridUpdate", object: nil)
+		let newGrid:GridProtocol = lifeEngine.grid
+		for i in 0..<newGrid.rows{
+			for j in 0..<newGrid.cols{
+				switch newGrid[i, j]{
+				case .Living:
+					counts.living += 1
+				case .Empty:
+					counts.empty += 1
+				case .Born:
+					counts.born += 1
+				case .Died:
+					counts.died += 1
+				}
+			}
+		}
 		emptyLabel.text = "Empty: \(counts.empty)"
 		livingLabel.text = "Living: \(counts.living)"
 		bornLabel.text = "Just Born: \(counts.born)"
 		diedLabel.text = "Just Died: \(counts.died)"
     }
-    
+	
+	var lifeEngine = StandardEngine.engine
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,5 +73,4 @@ class StatisticsViewController: UIViewController {	//Icon from http://www.iconbe
 	@IBOutlet weak var livingLabel: UILabel!
 	@IBOutlet weak var bornLabel: UILabel!
 	@IBOutlet weak var diedLabel: UILabel!
-	
 }
