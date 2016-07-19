@@ -16,6 +16,9 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
 		
 		lifeEngine.cols = Int(colStepperOut.value)
 		lifeEngine.rows = Int(rowStepperOut.value)
+		rowsDisplay.text = "\(lifeEngine.rows)"
+		colsDisplay.text = "\(lifeEngine.cols)"
+		refreshSliderLabel.text = "\(refreshSliderOut.value) Hz"
 
     }
 
@@ -35,6 +38,7 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
 		colsDisplay.text = "\(lifeEngine.cols)"
 	}
 	@IBAction func refreshSlider(sender: AnyObject) {
+		refreshSliderLabel.text = "\(refreshSliderOut.value) Hz"
 	}
 	@IBAction func refreshSwitch(sender: AnyObject) {
 	}
@@ -44,5 +48,6 @@ class InstrumentationViewController: UIViewController {	//Icon from http://www.i
 	@IBOutlet weak var refreshSwitchOut: UISwitch!
 	@IBOutlet weak var rowsDisplay: UITextField!
 	@IBOutlet weak var colsDisplay: UITextField!
+	@IBOutlet weak var refreshSliderLabel: UILabel!
 }
 

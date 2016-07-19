@@ -19,7 +19,7 @@ class StandardEngine:EngineProtocol{
 	var _grid:GridProtocol! = nil{
         didSet{
 			if let delegate = delegate{ delegate.engineDidUpdate(self._grid)}
-//			NSNotificationCenter.defaultCenter().postNotificationName("GridUpdate", object: nil, userInfo: ["newGrid":self._grid])
+			NSNotificationCenter.defaultCenter().postNotificationName("GridUpdate", object: nil, userInfo: ["newGrid":self._grid as! Grid])
         }
     }
     var grid: GridProtocol{

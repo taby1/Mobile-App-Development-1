@@ -34,7 +34,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="G59-9Z-jYX" userLabel="Rows">
-                                                <rect key="frame" x="56" y="58" width="448" height="60"/>
+                                                <rect key="frame" x="56" y="54" width="448" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXk-ez-llU">
                                                         <rect key="frame" x="204" y="0.0" width="41" height="21"/>
@@ -69,7 +69,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2v5-qc-lyk" userLabel="Columns">
-                                                <rect key="frame" x="56" y="176" width="448" height="60"/>
+                                                <rect key="frame" x="56" y="168" width="448" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fD1-aw-KFy">
                                                         <rect key="frame" x="190" y="0.0" width="68" height="21"/>
@@ -104,7 +104,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Z6Y-W1-0Ry" userLabel="Refresh Rate">
-                                                <rect key="frame" x="56" y="295" width="448" height="60"/>
+                                                <rect key="frame" x="56" y="283" width="448" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Refresh Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1my-JN-UQf">
                                                         <rect key="frame" x="175" y="0.0" width="99" height="21"/>
@@ -113,19 +113,25 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="SiB-pI-Uct">
-                                                        <rect key="frame" x="-2" y="30" width="452" height="31"/>
+                                                        <rect key="frame" x="-2" y="25" width="452" height="31"/>
                                                         <connections>
                                                             <action selector="refreshSlider:" destination="9pv-A4-QxB" eventType="valueChanged" id="mEz-xZ-tyw"/>
                                                         </connections>
                                                     </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10 Hz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDW-QY-Svl" userLabel="Rate Label">
+                                                        <rect key="frame" x="202" y="59" width="44" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="Led-0s-w2H"/>
+                                                    <constraint firstAttribute="height" constant="80" id="Led-0s-w2H"/>
                                                     <constraint firstItem="SiB-pI-Uct" firstAttribute="width" secondItem="Z6Y-W1-0Ry" secondAttribute="width" id="uUd-vg-CAb"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4ho-M0-fpB" userLabel="Auto Refresh">
-                                                <rect key="frame" x="56" y="413" width="448" height="60"/>
+                                                <rect key="frame" x="56" y="417" width="448" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rk-6a-aiC">
                                                         <rect key="frame" x="175" y="0.0" width="99" height="21"/>
@@ -185,6 +191,7 @@
                     <connections>
                         <outlet property="colStepperOut" destination="sAe-xF-xpK" id="noZ-oa-16r"/>
                         <outlet property="colsDisplay" destination="2Wa-KI-31b" id="tp4-iL-73w"/>
+                        <outlet property="refreshSliderLabel" destination="sDW-QY-Svl" id="6DS-mS-ip2"/>
                         <outlet property="refreshSliderOut" destination="SiB-pI-Uct" id="dK9-yR-5fd"/>
                         <outlet property="refreshSwitchOut" destination="gzh-yZ-Dw9" id="90p-9c-LF6"/>
                         <outlet property="rowStepperOut" destination="Zqw-mN-MzL" id="eLI-jy-QSM"/>
