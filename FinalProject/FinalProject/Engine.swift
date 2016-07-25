@@ -50,7 +50,7 @@ class Cell:Hashable{	//Since I didn't know how to make typealiases conform to pr
 	var position:Position{get{return _position}}
 	var state:CellState{get{return _state}}
 }
-func ==(lhs:Cell, rhs:Cell) -> Bool{return lhs.hashValue == rhs.hashValue}
+func ==(lhs:Cell, rhs:Cell) -> Bool{return (lhs.position == rhs.position) && (lhs.state == rhs.state)}
 
 enum CellState:Int{
 	case Living
@@ -87,10 +87,16 @@ class Grid:GridProtocol{
 		_rows = rows
 		_cols = cols
 	}
-	let _rows:Int!
-	let _cols: Int!
-	var rows: Int{get{return _rows}}
-	var cols: Int{get{return _cols}}
+	var _rows:Int!{didSet{self.state = Set(self.state.filter{$0.position.row <= rows})}}
+	var _cols:Int!{didSet{self.state = Set(self.state.filter{$0.position.col <= cols})}}
+	var rows: Int{
+		get{return _rows}
+		set{_rows = newValue}
+	}
+	var cols: Int{
+		get{return _cols}
+		set{_cols = newValue}
+	}
 	var state = Set<Cell>()
 	subscript(row:Int, col:Int) -> CellState{get{return CellState.Living.allValues().reduce(.Empty){state.contains(Cell(position: (row:row, col:col), state:$1)) ? $1 : $0}}
 		set{
