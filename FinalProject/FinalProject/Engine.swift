@@ -38,9 +38,8 @@ protocol GridViewDelegate{
 }
 
 typealias Position = (row:Int, col:Int)
-//typealias Cell = (position:Position, state:CellState)
-class Cell:Hashable{
-	var hashValue: Int{get{return Int("\(self.position.row)" + "\(self.position.col)" + self.state.rawValue)!}}
+class Cell:Hashable{	//Since I didn't know how to make typealiases conform to protocols
+	var hashValue: Int{get{return self.position.col * self.position.row * self.state.rawValue}}
 	
 	required init(position:Position, state:CellState){
 		_position = position
@@ -53,13 +52,22 @@ class Cell:Hashable{
 }
 func ==(lhs:Cell, rhs:Cell) -> Bool{return lhs.hashValue == rhs.hashValue}
 
-enum CellState:String{
-	case Living = "Living"
-	case Empty = "Empty"
-	case Born = "Born"
-	case Died = "Died"
+enum CellState:Int{
+	case Living
+	case Empty
+	case Born
+	case Died
 	func description() -> String{
-		return self.rawValue
+		switch self{
+		case .Born:
+			return "Born"
+		case .Living:
+			return "Living"
+		case .Died:
+			return "Died"
+		case .Empty:
+			return "Empty"
+		}
 	}
 	func allValues() -> [CellState]{
 		return [CellState.Living,CellState.Empty,CellState.Born,CellState.Died]
@@ -84,11 +92,10 @@ class Grid:GridProtocol{
 	var rows: Int{get{return _rows}}
 	var cols: Int{get{return _cols}}
 	var state = Set<Cell>()
-	subscript(row:Int, col:Int) -> CellState{
-		get{
-			return 
-		}set{
-			
+	subscript(row:Int, col:Int) -> CellState{get{return CellState.Living.allValues().reduce(.Empty){state.contains(Cell(position: (row:row, col:col), state:$1)) ? $1 : $0}}
+		set{
+			CellState.Living.allValues().reduce(nil){self.state.contains(Cell(position: (row:row, col:col), state: $1)) ? self.state.remove(Cell(position: (row:row, col:col), state: $1)) : $0}
+			if newValue != .Empty{self.state.insert(Cell(position: (row:row, col:col), state: newValue))}
 		}
 	}
 }
