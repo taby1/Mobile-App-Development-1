@@ -25,15 +25,18 @@ class ViewController: UIViewController {
 		let url = NSURL(string: "http://www.google.com/")!
 		let fetcher = Fetcher()
 		fetcher.requestJSON(url) { (json, message) in
-			if let json = json{
-				self.textView.text = json.description
+			let op = NSBlockOperation{
+				if let json = json{
+					self.textView.text = json.description
+				}
+				else if let message = message{
+					self.textView.text = message
+				}
+				else{
+					self.textView.text = "SLDKJF"
+				}
 			}
-			else if let message = message{
-				self.textView.text = message
-			}
-			else{
-				self.textView.text = "SLDKJF"
-			}
+			NSOperationQueue.mainQueue().addOperation(op)
 		}
 	}
 
