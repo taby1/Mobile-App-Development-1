@@ -1,0 +1,5 @@
+Final Project Bonus Proposal:
+More efficient Engine, Grid, and GridView objects to allow for larger game of life simulations (hopefully approaching 
+a scale of 1 pixel: 1 cell with a reasonably sized gridView)
+
+Also, if I have time, I would like to make saved configurations persistent by writing modified configurations to a file.
