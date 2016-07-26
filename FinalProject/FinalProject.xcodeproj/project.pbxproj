@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CB1B0B21D47E6AF00AC6BF5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1B0B11D47E6AF00AC6BF5 /* Protocols.swift */; };
 		0CB546AA1D45A892000FD9C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB546A91D45A892000FD9C0 /* AppDelegate.swift */; };
 		0CB546AC1D45A892000FD9C0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB546AB1D45A892000FD9C0 /* FirstViewController.swift */; };
 		0CB546AE1D45A892000FD9C0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB546AD1D45A892000FD9C0 /* SecondViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CB1B0B11D47E6AF00AC6BF5 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		0CB546A61D45A892000FD9C0 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CB546A91D45A892000FD9C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CB546AB1D45A892000FD9C0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				0CB546AD1D45A892000FD9C0 /* SecondViewController.swift */,
 				0CB546AF1D45A892000FD9C0 /* Main.storyboard */,
 				0CB546BD1D45ACD5000FD9C0 /* Engine.swift */,
+				0CB1B0B11D47E6AF00AC6BF5 /* Protocols.swift */,
 				0CB546B21D45A892000FD9C0 /* Assets.xcassets */,
 				0CB546B41D45A892000FD9C0 /* LaunchScreen.storyboard */,
 				0CB546B71D45A892000FD9C0 /* Info.plist */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB1B0B21D47E6AF00AC6BF5 /* Protocols.swift in Sources */,
 				0CB546AE1D45A892000FD9C0 /* SecondViewController.swift in Sources */,
 				0CB546BE1D45ACD5000FD9C0 /* Engine.swift in Sources */,
 				0CB546AA1D45A892000FD9C0 /* AppDelegate.swift in Sources */,
@@ -296,6 +300,7 @@
 				0CB546BC1D45A892000FD9C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

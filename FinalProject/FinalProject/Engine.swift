@@ -9,39 +9,13 @@
 import Foundation
 
 
-protocol GridProtocol{
-	init(rows:Int, cols:Int)
-	var rows:Int {get}
-	var cols:Int {get}
-	subscript(row: Int, col:Int) -> CellState { get set }
-}
 
-protocol EngineDelegate{
-	func engineDidUpdate(withGrid:GridProtocol)
-	func dimensionsDidChange(rows:Int, cols:Int)
-}
-
-protocol EngineProtocol{
-	var delegate:EngineDelegate? {get set}
-	var grid:GridProtocol{ get set}
-	var refreshRate:Double {get set}
-	var refreshTimer:NSTimer {get set}
-	var rows:Int {get set}
-	var cols:Int {get set}
-	init(rows:Int, cols:Int)
-	func step()
-	var sharedInstance:EngineProtocol{get}
-}
-
-protocol GridViewDelegate{
-	func touchChange(row:Int, col:Int, newState:CellState)	//Allows 'drawn' cells to be probagated to the engine object
-}
 
 typealias Position = (row:Int, col:Int)
-class Cell:Hashable{	//Since I didn't know how to make typealiases conform to protocols
+struct Cell:Hashable{	//Since I didn't know how to make typealiases conform to protocols
 	var hashValue: Int{get{return self.position.col * self.position.row * self.state.rawValue}}
 	
-	required init(position:Position, state:CellState){
+	init(position:Position, state:CellState){
 		_position = position
 		_state = state
 	}
@@ -82,8 +56,8 @@ enum CellState:Int{
 	}
 }
 
-class Grid:GridProtocol{
-	required init(rows: Int, cols: Int) {
+struct Grid:GridProtocol{
+	init(rows: Int, cols: Int) {
 		_rows = rows
 		_cols = cols
 	}
@@ -98,16 +72,78 @@ class Grid:GridProtocol{
 		set{_cols = newValue}
 	}
 	var state = Set<Cell>()
-	subscript(row:Int, col:Int) -> CellState{get{return CellState.Living.allValues().reduce(.Empty){state.contains(Cell(position: (row:row, col:col), state:$1)) ? $1 : $0}}
+	subscript(row:Int, col:Int) -> CellState{
+		get{return CellState.Living.allValues().reduce(.Empty){state.contains(Cell(position: (row:row, col:col), state:$1)) ? $1 : $0}}
 		set{
 			CellState.Living.allValues().reduce(nil){self.state.contains(Cell(position: (row:row, col:col), state: $1)) ? self.state.remove(Cell(position: (row:row, col:col), state: $1)) : $0}
 			if newValue != .Empty{self.state.insert(Cell(position: (row:row, col:col), state: newValue))}
 		}
 	}
+	var ofInterest: [Cell]{get{return Array(state)}
+		set{state = Set(newValue)}
+	}
 }
 
-//class StandardEngine:EngineProtocol{
-//	init(rows: Int, cols: Int) {
-//
-//	}
-//}
+class StandardEngine:EngineProtocol{
+	private static var _sharedInstance: EngineProtocol = StandardEngine(rows: 20, cols: 20)
+	static var sharedInstance: EngineProtocol{get{return _sharedInstance}}
+	required init(rows: Int, cols: Int) {
+		_rows = rows
+		_cols = cols
+	}
+	var _rows:Int
+	var _cols:Int
+	var rows: Int{get{return _rows}
+		set{_rows = newValue}}
+	var cols: Int{get{return _cols}
+		set{_cols = newValue}}
+	
+	var delegate: EngineDelegate?
+	var grid: GridProtocol
+	
+	var refreshRate: Double = 0
+	var refreshTimer: NSTimer = NSTimer()
+	
+	func step() {
+		var tempState:[Position] = []
+		self.grid.ofInterest.map{
+			switch $0.state{
+			case .Living, .Born:self.neighbors($0.position).map{tempState.append($0)}
+			default:break
+			}
+		}
+		var livingNeighbors:[(Position, Int)] = []
+		tempState.map{
+			livingNeighbors.append(($0,numberIn($0, within:tempState)))
+			let g = $0
+			tempState = tempState.filter{g != $0}
+		}
+		
+	}
+	func numberIn(toFind: Position, within:[Position]) -> Int{
+		return within.reduce(0){$1 == toFind ? $0 + 1: $0}
+	}
+	func neighbors(pos: Position) -> [Position] {
+		return StandardEngine.offsets.map { Position((pos.row + rows + $0.row) % rows,
+			(pos.col + cols + $0.col) % cols) }
+	}
+	private static let offsets:[Position] = [
+		(-1, -1), (-1, 0), (-1, 1),
+		( 0, -1),          ( 0, 1),
+		( 1, -1), ( 1, 0), ( 1, 1)
+	]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
