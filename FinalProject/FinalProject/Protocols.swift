@@ -12,7 +12,7 @@ protocol GridProtocol{
 	init(rows:Int, cols:Int)
 	var rows:Int {get}
 	var cols:Int {get}
-	subscript(row: Int, col:Int) -> CellState { get set }
+	subscript(pos: Position) -> CellState { get set }
 	var ofInterest:[Cell] {get set}
 }
 
@@ -29,8 +29,7 @@ protocol EngineProtocol{
 	var rows:Int {get set}
 	var cols:Int {get set}
 	init(rows:Int, cols:Int)
-	func step()
-	var sharedInstance:EngineProtocol{get}
+	func step() -> GridProtocol
 }
 
 protocol GridViewDelegate{

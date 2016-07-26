@@ -54,6 +54,12 @@ enum CellState:Int{
 			return .Living
 		}
 	}
+	func isLiving() -> Bool{
+		switch self{
+		case .Living, .Born: return true
+		case .Died, .Empty: return false
+		}
+	}
 }
 
 struct Grid:GridProtocol{
@@ -72,11 +78,11 @@ struct Grid:GridProtocol{
 		set{_cols = newValue}
 	}
 	var state = Set<Cell>()
-	subscript(row:Int, col:Int) -> CellState{
-		get{return CellState.Living.allValues().reduce(.Empty){state.contains(Cell(position: (row:row, col:col), state:$1)) ? $1 : $0}}
+	subscript(pos: Position) -> CellState{
+		get{return CellState.Living.allValues().reduce(.Empty){state.contains(Cell(position: (row:pos.row, col:pos.col), state:$1)) ? $1 : $0}}
 		set{
-			CellState.Living.allValues().reduce(nil){self.state.contains(Cell(position: (row:row, col:col), state: $1)) ? self.state.remove(Cell(position: (row:row, col:col), state: $1)) : $0}
-			if newValue != .Empty{self.state.insert(Cell(position: (row:row, col:col), state: newValue))}
+			CellState.Living.allValues().reduce(nil){self.state.contains(Cell(position: (row:pos.row, col:pos.col), state: $1)) ? self.state.remove(Cell(position: (row:pos.row, col:pos.col), state: $1)) : $0}
+			if newValue != .Empty{self.state.insert(Cell(position: (row:pos.row, col:pos.col), state: newValue))}
 		}
 	}
 	var ofInterest: [Cell]{get{return Array(state)}
@@ -90,6 +96,7 @@ class StandardEngine:EngineProtocol{
 	required init(rows: Int, cols: Int) {
 		_rows = rows
 		_cols = cols
+		self.grid = Grid(rows: rows, cols: cols)
 	}
 	var _rows:Int
 	var _cols:Int
@@ -104,21 +111,27 @@ class StandardEngine:EngineProtocol{
 	var refreshRate: Double = 0
 	var refreshTimer: NSTimer = NSTimer()
 	
-	func step() {
+	func step() -> GridProtocol{
 		var tempState:[Position] = []
-		self.grid.ofInterest.map{
-			switch $0.state{
-			case .Living, .Born:self.neighbors($0.position).map{tempState.append($0)}
-			default:break
-			}
-		}
-		var livingNeighbors:[(Position, Int)] = []
+		self.grid.ofInterest.map{$0.state.isLiving() ? self.neighbors($0.position).map{tempState.append($0)} : []}
+		var livingNeighbors:[(pos:Position, num:Int)] = []
 		tempState.map{
 			livingNeighbors.append(($0,numberIn($0, within:tempState)))
 			let g = $0
 			tempState = tempState.filter{g != $0}
 		}
-		
+		var newGrid = Grid(rows: self.rows, cols: self.cols)
+		livingNeighbors.map{
+			switch $0.num{
+			case 2 where grid[$0.pos].isLiving(), 3 where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Living
+			case 3 where !grid[$0.pos].isLiving(): newGrid[$0.pos] = .Born
+			case _ where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Died
+			default: break
+			}
+		}
+		self.grid = newGrid
+		if let delegate = delegate { delegate.engineDidUpdate(grid) }
+		return self.grid
 	}
 	func numberIn(toFind: Position, within:[Position]) -> Int{
 		return within.reduce(0){$1 == toFind ? $0 + 1: $0}
