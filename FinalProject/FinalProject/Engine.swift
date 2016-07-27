@@ -88,6 +88,7 @@ struct Grid:GridProtocol{
 	var ofInterest: [Cell]{get{return Array(state)}
 		set{state = Set(newValue)}
 	}
+		//Sorry I couldn't conscience putting neighbors() here so it's in Engine
 }
 
 class StandardEngine:EngineProtocol{
