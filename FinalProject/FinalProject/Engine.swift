@@ -62,8 +62,8 @@ enum CellState:Int{
 	}
 }
 
-struct Grid:GridProtocol{
-	init(rows: Int, cols: Int) {
+class Grid:GridProtocol{
+	required init(rows: Int, cols: Int) {
 		_rows = rows
 		_cols = cols
 	}

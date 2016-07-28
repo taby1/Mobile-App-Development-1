@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FirstViewController.swift
 //  FinalProject
 //
 //  Created by Patrick on 7/24/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class InstrumentationViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
