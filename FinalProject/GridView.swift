@@ -39,5 +39,8 @@ import UIKit
 				}
 			}
 		}
+		else{	//if we're only drawing a subsection of the screen
+			
+		}
 	}
 }
