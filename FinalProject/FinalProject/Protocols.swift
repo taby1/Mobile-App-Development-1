@@ -14,6 +14,7 @@ protocol GridProtocol{
 	var cols:Int {get set}
 	subscript(pos: Position) -> CellState { get set }
 	var ofInterest:[Cell] {get set}
+    var state:Set<Cell> {get}
 }
 
 protocol EngineDelegate{

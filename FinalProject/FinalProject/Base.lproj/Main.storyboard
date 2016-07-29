@@ -309,7 +309,7 @@
                     <connections>
                         <outlet property="flowButton" destination="QNZ-QM-yqQ" id="dy4-DY-bNq"/>
                         <outlet property="gridAspect" destination="glw-03-f2G" id="2ht-so-1i8"/>
-                        <outlet property="gridView" destination="izA-Du-3UJ" id="B6V-qX-a7E"/>
+                        <outlet property="gridView" destination="Ytn-Fa-pdN" id="G6E-KG-FX8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

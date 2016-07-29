@@ -8,14 +8,18 @@
 
 import UIKit
 
-@IBDesignable class GridView: UIView {
+@IBDesignable class GridView: UIView{
 	@IBInspectable var rows:Int = 20{
 		didSet{
 			grid.rows = rows
+            xSize = bounds.width / CGFloat(cols)
+            ySize = bounds.height / CGFloat(rows)
 		}
 	}
 	@IBInspectable var cols:Int = 20{
-		didSet{
+        didSet{
+            xSize = bounds.width / CGFloat(cols)
+            ySize = bounds.height / CGFloat(rows)
 			grid.cols = cols
 		}
 	}
@@ -23,15 +27,27 @@ import UIKit
 	@IBInspectable var emptyColor:UIColor = UIColor.whiteColor(){didSet{colors = [.Living:livingColor, .Died:diedColor, .Born:bornColor, .Empty:emptyColor]}}
 	@IBInspectable var bornColor:UIColor = UIColor.greenColor(){didSet{colors = [.Living:livingColor, .Died:diedColor, .Born:bornColor, .Empty:emptyColor]}}
 	@IBInspectable var diedColor:UIColor = UIColor.redColor(){didSet{colors = [.Living:livingColor, .Died:diedColor, .Born:bornColor, .Empty:emptyColor]}}
-	private var colors:[CellState:UIColor]! = nil
+    private var colors:[CellState:UIColor]! = nil
+    
+    private var xSize:CGFloat = CGFloat(1)
+    private var ySize:CGFloat = CGFloat(1)
 	
-	var grid:GridProtocol = Grid(rows: 20, cols: 20)
+    var grid:GridProtocol = Grid(rows: 20, cols: 20)
+    func setCell(pos:Position, state:CellState){
+        grid[pos] = state
+        self.setNeedsDisplayInRect(CGRect(x: CGFloat(pos.col) * xSize, y: CGFloat(pos.row) * ySize, width: xSize, height: ySize))
+    }
+    
+    func viewDidLayoutSubviews(){
+        xSize = bounds.width / CGFloat(cols)
+        ySize = bounds.height / CGFloat(rows)
+    }
 	
     var delegate:GridViewDelegate?
     
     override func drawRect(rect: CGRect) {
-        let xSize = bounds.width / CGFloat(cols)
-        let ySize = bounds.height / CGFloat(rows)
+        xSize = bounds.width / CGFloat(cols)
+        ySize = bounds.height / CGFloat(rows)
 		if (bounds.height == rect.height) && (bounds.width == rect.width){	//If we're redrawing the entire thing
 			for row in (0..<rows){
 				for col in (0..<cols){
@@ -56,8 +72,6 @@ import UIKit
 		}
     }
     func getRect(y:CGFloat, x:CGFloat) -> Position{ //takes coordinate pair and determines what rectange they're in
-        let xSize = bounds.width / CGFloat(cols)
-        let ySize = bounds.height / CGFloat(rows)
         return (row:Int(floor(y / ySize)), col:Int(floor(x / xSize)))
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

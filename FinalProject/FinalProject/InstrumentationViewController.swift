@@ -51,6 +51,7 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var refreshSliderValue: UISlider!
     @IBAction func refreshSliderMoved(sender: AnyObject) {
         refreshLabel.text = "Refresh Rate: \(refreshSliderValue.value) Hz"
+        if refreshSwitch.on{ engine.refreshRate = Double(1/refreshSliderValue.value)}
     }
     @IBAction func refreshSwitchMoved(sender: AnyObject) {
         if refreshSwitch.on{ engine.refreshRate = Double(1/refreshSliderValue.value)}

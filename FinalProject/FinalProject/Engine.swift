@@ -134,9 +134,10 @@ class StandardEngine:EngineProtocol{
 		self.grid.ofInterest.map{$0.state.isLiving() ? self.neighbors($0.position).map{tempState.append($0)} : []}
 		var livingNeighbors:[(pos:Position, num:Int)] = []
 		tempState.map{
-			livingNeighbors.append(($0,numberIn($0, within:tempState)))
-			let g = $0
-			tempState = tempState.filter{g != $0}
+            let g = $0
+            if(livingNeighbors.reduce(0){$1.pos == g ? $0 + 1 : $0} == 0){ livingNeighbors.append(($0,numberIn($0, within:tempState)))}
+//			let g = $0
+//			tempState = tempState.filter{g != $0}
 		}
 		var newGrid = Grid(rows: self.rows, cols: self.cols)
 		livingNeighbors.map{
@@ -144,7 +145,7 @@ class StandardEngine:EngineProtocol{
 			case 2 where grid[$0.pos].isLiving(), 3 where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Living
 			case 3 where !grid[$0.pos].isLiving(): newGrid[$0.pos] = .Born
 			case _ where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Died
-			default: break
+			default: newGrid[$0.pos] = .Empty
 			}
 		}
 		self.grid = newGrid
@@ -155,7 +156,7 @@ class StandardEngine:EngineProtocol{
 		return within.reduce(0){$1 == toFind ? $0 + 1: $0}
 	}
 	func neighbors(pos: Position) -> [Position] {
-		return StandardEngine.offsets.map { Position((pos.row + rows + $0.row) % rows,
+        return StandardEngine.offsets.map { (row:(pos.row + rows + $0.row) % rows, col:
 			(pos.col + cols + $0.col) % cols) }
 	}
 	private static let offsets:[Position] = [
