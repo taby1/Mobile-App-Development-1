@@ -8,11 +8,8 @@
 
 import Foundation
 
-
-
-
 typealias Position = (row:Int, col:Int)
-struct Cell:Hashable{	//Since I didn't know how to make typealiases conform to protocols
+struct Cell:Hashable{
 	var hashValue: Int{get{return self.position.col * self.position.row * self.state.rawValue}}
 	
 	init(position:Position, state:CellState){
@@ -46,12 +43,12 @@ enum CellState:Int{
 	func allValues() -> [CellState]{
 		return [CellState.Living,CellState.Empty,CellState.Born,CellState.Died]
 	}
-	func toggle(value:CellState) -> CellState {
-		switch value {
+	func toggle() -> CellState {
+		switch self {
 		case .Living, .Born:
-			return .Empty
+			return .Died
 		case .Empty,.Died:
-			return .Living
+			return .Born
 		}
 	}
 	func isLiving() -> Bool{
@@ -109,8 +106,28 @@ class StandardEngine:EngineProtocol{
 	var delegate: EngineDelegate?
 	var grid: GridProtocol
 	
-	var refreshRate: Double = 0
-	var refreshTimer: NSTimer = NSTimer()
+    var refreshRate: Double = 0{
+        didSet{
+            if refreshRate != 0{
+                refreshTimer?.invalidate()
+                refreshTimer = NSTimer.scheduledTimerWithTimeInterval(NSTimeInterval(refreshRate), target: self, selector: #selector(StandardEngine.timerHandler(_:)), userInfo: nil, repeats: true)
+            }
+            else{
+                refreshTimer?.invalidate()
+                refreshTimer = nil
+            }
+            if let _ = refreshTimer, delegate = delegate{
+                delegate.timerDidChange(true)
+            }
+            else if let delegate = delegate{
+                delegate.timerDidChange(false)
+            }
+        }
+    }
+    var refreshTimer: NSTimer?
+    @objc func timerHandler(_:NSTimer){
+        self.step()
+    }
 	
 	func step() -> GridProtocol{
 		var tempState:[Position] = []

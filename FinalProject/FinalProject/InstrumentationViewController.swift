@@ -12,14 +12,50 @@ class InstrumentationViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+        engine.cols = Int(colStepper.value)
+        engine.rows = Int(rowStepper.value)
+        colDisplay.text = "\(engine.cols)"
+        rowDisplay.text = "\(engine.rows)"
+        refreshLabel.text = "Refresh Rate: \(refreshSliderValue.value) Hz"
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
+    
+    var engine:EngineProtocol = StandardEngine.sharedInstance
 
-
+    @IBOutlet weak var rowStepper: UIStepper!
+    @IBOutlet weak var colStepper: UIStepper!
+    @IBOutlet weak var rowDisplay: UITextField!
+    @IBOutlet weak var colDisplay: UITextField!
+    @IBAction func rowStepperClicked(sender: AnyObject) {
+        if(rowStepper.value <= 100){
+            engine.rows = Int(rowStepper.value)
+        }
+        else{
+            engine.rows = Int((rowStepper.value - 100) * 10 + 100)
+        }
+        rowDisplay.text = "\(engine.rows)"
+    }
+    @IBAction func colStepperClicked(sender: AnyObject) {
+        if(colStepper.value <= 100){
+            engine.cols = Int(colStepper.value)
+        }
+        else{
+            engine.cols = Int((colStepper.value - 100) * 10 + 100)
+        }
+        colDisplay.text = "\(engine.cols)"
+    }
+    @IBOutlet weak var refreshLabel: UILabel!
+    @IBOutlet weak var refreshSliderValue: UISlider!
+    @IBAction func refreshSliderMoved(sender: AnyObject) {
+        refreshLabel.text = "Refresh Rate: \(refreshSliderValue.value) Hz"
+    }
+    @IBAction func refreshSwitchMoved(sender: AnyObject) {
+        if refreshSwitch.on{ engine.refreshRate = Double(1/refreshSliderValue.value)}
+        else{engine.refreshRate = 0.0}
+    }
+    @IBOutlet weak var refreshSwitch: UISwitch!
 }
 

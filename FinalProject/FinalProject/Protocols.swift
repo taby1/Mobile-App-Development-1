@@ -19,13 +19,14 @@ protocol GridProtocol{
 protocol EngineDelegate{
 	func engineDidUpdate(withGrid:GridProtocol)
 	func dimensionsDidChange(rows:Int, cols:Int)
+    func timerDidChange(newState:Bool)
 }
 
 protocol EngineProtocol{
 	var delegate:EngineDelegate? {get set}
 	var grid:GridProtocol{ get set}
 	var refreshRate:Double {get set}
-	var refreshTimer:NSTimer {get set}
+	var refreshTimer:NSTimer? {get set}
 	var rows:Int {get set}
 	var cols:Int {get set}
 	init(rows:Int, cols:Int)
@@ -33,5 +34,5 @@ protocol EngineProtocol{
 }
 
 protocol GridViewDelegate{
-	func touchChange(row:Int, col:Int, newState:CellState)	//Allows 'drawn' cells to be probagated to the engine object
+	func touchChange(row:Int, col:Int, newState:CellState)	//Allows 'drawn' cells to be propagated to the engine object
 }
