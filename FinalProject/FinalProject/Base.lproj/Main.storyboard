@@ -434,7 +434,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="1X7-nW-ype" kind="show" id="fWa-Kq-KbM"/>
+                                    <segue destination="zRN-YV-luj" kind="show" id="vq3-uv-MZV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -444,6 +444,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Configurations" id="KgC-Vt-dVd">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="fkf-zJ-TBy"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3qL-AH-O9M">
                             <connections>
                                 <action selector="addName:" destination="veZ-eS-2is" id="uMe-HY-Lgh"/>
@@ -455,6 +456,79 @@
             </objects>
             <point key="canvasLocation" x="2250" y="-905"/>
         </scene>
+        <!--Editor-->
+        <scene sceneID="zib-sd-tSx">
+            <objects>
+                <viewController id="zRN-YV-luj" customClass="GridEditViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qt3-PD-gYn"/>
+                        <viewControllerLayoutGuide type="bottom" id="KhC-NQ-Znm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OAw-aF-tRs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvJ-K1-In7">
+                                <rect key="frame" x="20" y="44" width="560" height="256"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYs-C1-ACt" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                        <rect key="frame" x="178" y="25" width="205" height="205"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="iYs-C1-ACt" secondAttribute="height" multiplier="1:1" id="zVm-Px-hWM"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rows">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
+                                                <color key="value" red="0.0" green="1" blue="0.075668181784514399" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
+                                                <color key="value" red="0.47491681349729553" green="1" blue="0.71794852592669889" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
+                                                <color key="value" red="1" green="0.0" blue="0.081942766766834652" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cols">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="iYs-C1-ACt" firstAttribute="width" relation="lessThanOrEqual" secondItem="hvJ-K1-In7" secondAttribute="width" multiplier="0.8" id="0Do-rh-mhM"/>
+                                    <constraint firstItem="iYs-C1-ACt" firstAttribute="centerX" secondItem="hvJ-K1-In7" secondAttribute="centerX" id="ONx-lF-LNC"/>
+                                    <constraint firstItem="iYs-C1-ACt" firstAttribute="height" relation="lessThanOrEqual" secondItem="hvJ-K1-In7" secondAttribute="height" multiplier="0.8" id="YMD-gT-xZG"/>
+                                    <constraint firstItem="iYs-C1-ACt" firstAttribute="centerY" secondItem="hvJ-K1-In7" secondAttribute="centerY" id="cYe-Ao-5ne"/>
+                                    <constraint firstItem="iYs-C1-ACt" firstAttribute="width" secondItem="hvJ-K1-In7" secondAttribute="width" multiplier="0.8" priority="750" id="hHQ-51-LIj"/>
+                                    <constraint firstItem="iYs-C1-ACt" firstAttribute="height" secondItem="hvJ-K1-In7" secondAttribute="height" multiplier="0.8" priority="750" id="qDP-r7-ZSV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="hvJ-K1-In7" secondAttribute="trailing" id="2yx-Kh-SnA"/>
+                            <constraint firstItem="hvJ-K1-In7" firstAttribute="leading" secondItem="OAw-aF-tRs" secondAttribute="leadingMargin" id="FP9-lC-LO8"/>
+                            <constraint firstItem="hvJ-K1-In7" firstAttribute="top" secondItem="qt3-PD-gYn" secondAttribute="bottom" id="Hjq-R5-5S7"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="hvJ-K1-In7" secondAttribute="bottom" id="ihc-3Y-DKY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Editor" id="jHa-Zd-Ldh">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="HJK-go-EbI"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="gridView" destination="iYs-C1-ACt" id="gpi-mq-qim"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16u-Sq-IDD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2943" y="-905"/>
+        </scene>
         <!--Edit-->
         <scene sceneID="Xcb-xd-Xb0">
             <objects>
@@ -464,7 +538,7 @@
                         <viewControllerLayoutGuide type="bottom" id="iCC-Ag-SqV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xc7-gr-Ghx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OVr-mU-Ig5">
@@ -496,7 +570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2p-FS-shy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2936" y="-912"/>
+            <point key="canvasLocation" x="2250" y="-345"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NPe-QX-fn0">
@@ -507,7 +581,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="veZ-eS-2is" kind="relationship" relationship="rootViewController" id="aTm-ME-bK4"/>
+                        <segue destination="veZ-eS-2is" kind="relationship" relationship="rootViewController" id="1xe-YB-MMR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1l-UI-MXh" userLabel="First Responder" sceneMemberID="firstResponder"/>

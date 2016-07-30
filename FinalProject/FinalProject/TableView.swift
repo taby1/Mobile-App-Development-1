@@ -25,7 +25,6 @@ class TableView: UITableViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-//        let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=boston,%20ma&appid=77e555f36584bc0c3d55e1e584960580")!
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
@@ -37,7 +36,6 @@ class TableView: UITableViewController {
                 }
                 NSOperationQueue.mainQueue().addOperation(op)
             }
-            else if let message = message{ print("We got a problem")}
         }
     }
     
@@ -89,7 +87,7 @@ class TableView: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let editingRow = (sender as! UITableViewCell).tag
         let editingString = names[editingRow]
-        guard let editingVC = segue.destinationViewController as? EditViewController
+        guard let editingVC = segue.destinationViewController as? GridEditViewController
             else {
                 preconditionFailure("Another wtf?")
         }
