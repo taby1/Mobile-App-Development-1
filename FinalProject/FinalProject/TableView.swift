@@ -2,9 +2,11 @@
 //  TableView.swift
 //  FinalProject
 //
-//  Created by labuser on 7/30/16.
+//  Created by Patrick Yoon on 7/30/16.
 //  Copyright © 2016 Taby Corp. All rights reserved.
 //
+
+//Derived from Ronald Simmons' Lecture 11 code
 
 import UIKit
 
@@ -23,18 +25,19 @@ class TableView: UITableViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=boston,%20ma&appid=77e555f36584bc0c3d55e1e584960580")!
+//        let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=boston,%20ma&appid=77e555f36584bc0c3d55e1e584960580")!
+        let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
-            if let json = json,
-                dict = json as? Dictionary<String,AnyObject> {
-                let keys = dict.keys
-                self.names = Array(keys)
+            if let json = json, array = json as? Array<Dictionary<String, AnyObject>>{
+                self.names = array.map{if let result = $0["title"] as? String{return result}
+                else{return ""}}
                 let op = NSBlockOperation {
                     self.tableView.reloadData()
                 }
                 NSOperationQueue.mainQueue().addOperation(op)
             }
+            else if let message = message{ print("We got a problem")}
         }
     }
     

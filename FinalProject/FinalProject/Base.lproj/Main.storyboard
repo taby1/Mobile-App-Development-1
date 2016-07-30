@@ -228,7 +228,7 @@
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="izA-Du-3UJ">
                                         <rect key="frame" x="66" y="24" width="429" height="429"/>
                                         <subviews>
-                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                            <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="429" height="429"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -265,7 +265,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="800" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Tw7-BT-foO">
-                                        <rect key="frame" x="173" y="477" width="214" height="30"/>
+                                        <rect key="frame" x="108" y="477" width="344" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IR-zI-vgc">
                                                 <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
@@ -274,8 +274,12 @@
                                                     <action selector="resetButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ddl-dQ-l8W"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-0T-Jo2">
+                                                <rect key="frame" x="159" y="0.0" width="34" height="30"/>
+                                                <state key="normal" title="Save"/>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-QM-yqQ">
-                                                <rect key="frame" x="182" y="0.0" width="32" height="30"/>
+                                                <rect key="frame" x="312" y="0.0" width="32" height="30"/>
                                                 <state key="normal" title="Flow"/>
                                                 <connections>
                                                     <action selector="flowButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="bjO-fs-FlX"/>
@@ -293,7 +297,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Tw7-BT-foO" firstAttribute="width" secondItem="izA-Du-3UJ" secondAttribute="width" multiplier="0.5" id="BU6-48-Oyc"/>
+                                    <constraint firstItem="Tw7-BT-foO" firstAttribute="width" secondItem="izA-Du-3UJ" secondAttribute="width" multiplier="0.8" id="BU6-48-Oyc"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -380,7 +384,7 @@
                             <outlet property="delegate" destination="veZ-eS-2is" id="QKH-ec-GNQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Saved Patterns" id="KgC-Vt-dVd">
+                    <navigationItem key="navigationItem" title="Configurations" id="KgC-Vt-dVd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3qL-AH-O9M">
                             <connections>
                                 <action selector="addName:" destination="veZ-eS-2is" id="uMe-HY-Lgh"/>
