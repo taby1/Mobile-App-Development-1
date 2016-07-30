@@ -154,6 +154,7 @@ class StandardEngine:EngineProtocol{
 		}
 		self.grid = newGrid
 		if let delegate = delegate { delegate.engineDidUpdate(grid) }
+        NSNotificationCenter.defaultCenter().postNotificationName("GridUpdated", object: nil)
 		return self.grid
 	}
 	func numberIn(toFind: Position, within:[Position]) -> Int{

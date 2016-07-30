@@ -37,6 +37,10 @@ import UIKit
         grid[pos] = state
         self.setNeedsDisplayInRect(CGRect(x: CGFloat(pos.col) * xSize, y: CGFloat(pos.row) * ySize, width: xSize, height: ySize))
     }
+    var points:[Position]{
+        get{return grid.ofInterest.filter{$0.state.isLiving()}.map{$0.position}}
+        set{grid.ofInterest = newValue.map{Cell(position: $0, state: .Living)}}
+    }
     
     func viewDidLayoutSubviews(){
         xSize = bounds.width / CGFloat(cols)

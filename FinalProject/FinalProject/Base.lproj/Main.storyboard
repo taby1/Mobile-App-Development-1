@@ -228,7 +228,7 @@
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="izA-Du-3UJ">
                                         <rect key="frame" x="66" y="24" width="429" height="429"/>
                                         <subviews>
-                                            <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="429" height="429"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -330,9 +330,68 @@
                     <view key="view" contentMode="scaleToFill" id="VHp-XV-O3y">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vOZ-Pi-bcn">
+                                <rect key="frame" x="20" y="20" width="560" height="531"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lJ-zy-c2I" userLabel="Spacer">
+                                        <rect key="frame" x="278" y="0.0" width="5" height="0.0"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="5" id="2Pg-xV-dgu"/>
+                                            <constraint firstAttribute="height" id="Wfr-ml-hFY"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Born: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtR-Hg-hcI">
+                                        <rect key="frame" x="257" y="89" width="46" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Living " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYp-i7-cuM">
+                                        <rect key="frame" x="255" y="200" width="50" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Died: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3r-hg-NNF">
+                                        <rect key="frame" x="239" y="310" width="82" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Empty: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPb-N4-ltK">
+                                        <rect key="frame" x="251" y="421" width="58" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AiS-gq-wtS" userLabel="Spacer">
+                                        <rect key="frame" x="278" y="531" width="5" height="0.0"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" id="5pi-UY-RAO"/>
+                                            <constraint firstAttribute="width" constant="5" id="P5q-56-qQV"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vOZ-Pi-bcn" firstAttribute="top" secondItem="1Nw-tT-6kc" secondAttribute="bottom" id="5HE-tG-iHE"/>
+                            <constraint firstItem="OXz-SN-9Dh" firstAttribute="top" secondItem="vOZ-Pi-bcn" secondAttribute="bottom" id="MX8-kX-ecb"/>
+                            <constraint firstItem="vOZ-Pi-bcn" firstAttribute="leading" secondItem="VHp-XV-O3y" secondAttribute="leadingMargin" id="gsf-vE-TCF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vOZ-Pi-bcn" secondAttribute="trailing" id="mg9-gH-5Lf"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Statistics" id="qhg-ON-WZj"/>
+                    <connections>
+                        <outlet property="bornLabel" destination="BtR-Hg-hcI" id="PlO-Gd-C4h"/>
+                        <outlet property="diedLabel" destination="J3r-hg-NNF" id="zcq-mO-GtZ"/>
+                        <outlet property="emptyLabel" destination="OPb-N4-ltK" id="dsJ-aQ-1Ra"/>
+                        <outlet property="livingLabel" destination="tYp-i7-cuM" id="ibm-Kb-swZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hi7-jJ-Rd7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

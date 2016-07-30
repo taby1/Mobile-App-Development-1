@@ -12,8 +12,11 @@ class StatisticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateHandler(_:)), name: "GridUpdated", object: nil)
+        updateHandler(NSNotification(name: "GridUpdated", object: nil))
+    }
+    override func viewDidAppear(animated: Bool) {
+        updateHandler(NSNotification(name: "GridUpdated", object: nil))
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +24,18 @@ class StatisticsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var bornLabel: UILabel!
+    @IBOutlet weak var livingLabel: UILabel!
+    @IBOutlet weak var diedLabel: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel!
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    var engine:EngineProtocol = StandardEngine.sharedInstance
+    
+    func updateHandler(notification: NSNotification){
+        let temp = engine.grid.ofInterest
+        bornLabel.text = "Born: \(temp.reduce(0){$1.state == .Born ? $0 + 1 : $0})"
+        diedLabel.text = "Died: \(temp.reduce(0){$1.state == .Died ? $0 + 1 : $0})"
+        livingLabel.text = "Living: \(temp.reduce(0){$1.state == .Living ? $0 + 1 : $0})"
+        emptyLabel.text = "Empty: \((engine.rows * engine.cols) - temp.count)"
     }
-    */
-
 }

@@ -31,7 +31,7 @@ class TableView: UITableViewController {
         fetcher.requestJSON(url) { (json, message) in
             if let json = json, array = json as? Array<Dictionary<String, AnyObject>>{
                 self.names = array.map{if let result = $0["title"] as? String{return result}
-                else{return ""}}
+                else{return "Error"}}
                 let op = NSBlockOperation {
                     self.tableView.reloadData()
                 }
