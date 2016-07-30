@@ -25,12 +25,11 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
     func engineDidUpdate(withGrid: GridProtocol) {
         gridView.grid.state.subtract(withGrid.state).map{gridView.setCell($0.position, state: .Empty)}
         gridView.grid.state.exclusiveOr(withGrid.state).map{gridView.setCell($0.position, state: $0.state)}
-//        gridView.grid = withGrid
-//        gridView.setNeedsDisplay()
     }
     func dimensionsDidChange(rows: Int, cols: Int) {
         gridView.rows = rows
         gridView.cols = cols
+        gridView.setNeedsDisplay()
     }
     func timerDidChange(newState: Bool) {   //where true is enabled
         newState ? flowButton.setTitle("Pause", forState: .Normal) : flowButton.setTitle("Step", forState: .Normal)
@@ -43,11 +42,24 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
     var engine:EngineProtocol = StandardEngine.sharedInstance
     
     @IBOutlet weak var gridView: GridView!
-    @IBOutlet weak var gridAspect: NSLayoutConstraint!
     @IBAction func flowButtonClicked(sender: AnyObject) {
-        engine.step()
+        guard let text = flowButton.titleLabel?.text else{return }
+        switch text{
+        case "Pause":
+            engine.refreshTimer?.invalidate()
+            flowButton.setTitle("Resume", forState: .Normal)
+        case "Resume":
+            engine.refreshRate = engine.refreshRate
+            flowButton.setTitle("Pause", forState: .Normal)
+        case "Step":
+            engine.step()
+        default:
+            print("ugoh")
+        }
     }
     @IBAction func resetButtonClicked(sender: AnyObject) {
+        engine.grid = Grid(rows: engine.rows, cols: engine.cols)
+        gridView.setNeedsDisplay()
     }
     @IBOutlet weak var flowButton: UIButton!
 

@@ -96,17 +96,21 @@ class StandardEngine:EngineProtocol{
 		_cols = cols
 		self.grid = Grid(rows: rows, cols: cols)
 	}
-	var _rows:Int
-	var _cols:Int
+    var _rows:Int{didSet{if let delegate = delegate{delegate.dimensionsDidChange(rows, cols:cols)}}}
+	var _cols:Int{didSet{if let delegate = delegate{delegate.dimensionsDidChange(rows, cols:cols)}}}
 	var rows: Int{get{return _rows}
 		set{_rows = newValue}}
 	var cols: Int{get{return _cols}
 		set{_cols = newValue}}
 	
 	var delegate: EngineDelegate?
-	var grid: GridProtocol
+    var grid: GridProtocol{
+        didSet{
+            if let delegate=delegate {delegate.engineDidUpdate(self.grid)}
+        }
+    }
 	
-    var refreshRate: Double = 0{
+    var refreshRate: Double = 0{    //timer handling methods derived from Ronald Simmons' ProjectPrototype code
         didSet{
             if refreshRate != 0{
                 refreshTimer?.invalidate()
@@ -155,11 +159,11 @@ class StandardEngine:EngineProtocol{
 	func numberIn(toFind: Position, within:[Position]) -> Int{
 		return within.reduce(0){$1 == toFind ? $0 + 1: $0}
 	}
-	func neighbors(pos: Position) -> [Position] {
+	func neighbors(pos: Position) -> [Position] {   //Derived from Ronald Simmons' ProjectPrototype Code
         return StandardEngine.offsets.map { (row:(pos.row + rows + $0.row) % rows, col:
 			(pos.col + cols + $0.col) % cols) }
 	}
-	private static let offsets:[Position] = [
+	private static let offsets:[Position] = [   //Derived from Ronald Simmons' ProjectPrototype Code
 		(-1, -1), (-1, 0), (-1, 1),
 		( 0, -1),          ( 0, 1),
 		( 1, -1), ( 1, 0), ( 1, 1)

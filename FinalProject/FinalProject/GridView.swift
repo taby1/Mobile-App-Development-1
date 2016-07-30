@@ -60,8 +60,8 @@ import UIKit
 		else{	//if we're only drawing a subsection of the screen
 			let minY = Int(floor(CGRectGetMinY(rect) / ySize))  //figure out which cell indexes need to be redrawn
             let minX = Int(floor(CGRectGetMinX(rect) / xSize))
-            let maxY = Int(ceil(CGRectGetMaxY(rect) / ySize))
-            let maxX = Int(ceil(CGRectGetMaxX(rect) / xSize))
+            let maxY = Int(ceil(rect.size.height / ySize)) + minY
+            let maxX = Int(ceil(rect.size.width / xSize)) + minX
             for row in (minY..<maxY){
                 for col in (minX..<maxX){
                     let rect:CGRect = CGRect(x: CGFloat(col) * xSize, y: CGFloat(row) * ySize, width: xSize, height: ySize)

@@ -226,13 +226,13 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="izA-Du-3UJ">
-                                        <rect key="frame" x="62" y="24" width="436" height="429"/>
+                                        <rect key="frame" x="66" y="24" width="429" height="429"/>
                                         <subviews>
                                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="436" height="429"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="429" height="429"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="Ytn-Fa-pdN" secondAttribute="height" multiplier="422:415" id="glw-03-f2G"/>
+                                                    <constraint firstAttribute="width" secondItem="Ytn-Fa-pdN" secondAttribute="height" multiplier="1:1" id="M2I-qx-66f"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="rows">
@@ -265,7 +265,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="800" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Tw7-BT-foO">
-                                        <rect key="frame" x="171" y="477" width="218" height="30"/>
+                                        <rect key="frame" x="173" y="477" width="214" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IR-zI-vgc">
                                                 <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
@@ -275,7 +275,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-QM-yqQ">
-                                                <rect key="frame" x="186" y="0.0" width="32" height="30"/>
+                                                <rect key="frame" x="182" y="0.0" width="32" height="30"/>
                                                 <state key="normal" title="Flow"/>
                                                 <connections>
                                                     <action selector="flowButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="bjO-fs-FlX"/>
@@ -308,7 +308,6 @@
                     <tabBarItem key="tabBarItem" title="Simulation" image="second" id="cPa-gy-q4n" userLabel="Simulation"/>
                     <connections>
                         <outlet property="flowButton" destination="QNZ-QM-yqQ" id="dy4-DY-bNq"/>
-                        <outlet property="gridAspect" destination="glw-03-f2G" id="2ht-so-1i8"/>
                         <outlet property="gridView" destination="Ytn-Fa-pdN" id="G6E-KG-FX8"/>
                     </connections>
                 </viewController>
