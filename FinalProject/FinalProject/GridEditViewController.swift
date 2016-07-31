@@ -11,7 +11,7 @@ import UIKit
 class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate {
 
     var name:String?
-    var commit: (String -> Void)?
+    var commit: ((name: String, points:[Position]) -> Void)?
     var points:[Position]?
     var rows:Int! = 5
     var cols:Int! = 5
@@ -19,7 +19,7 @@ class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate
     @IBAction func save(sender: AnyObject) {
         guard let newText = name, commit = commit
             else { return }
-        commit(newText)
+        commit(name: newText, points:self.gridView.points)
         navigationController!.popViewControllerAnimated(true)
     }
     @IBAction func load(sender: AnyObject) {
@@ -27,6 +27,7 @@ class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate
         singleEngine.rows = rows
         singleEngine.grid = gridView.grid
         tabBarController?.selectedIndex = 1
+        navigationController?.popViewControllerAnimated(false)
     }
     @IBOutlet weak var loadButton: UIButton!
     

@@ -13,6 +13,7 @@ import UIKit
 class TableView: UITableViewController {
     
     private var names:Array<String> = []
+    private var savedNames:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class TableView: UITableViewController {
     }
     
     var loadedGrids:[String:[Position]] = [:]
+    var savedGrids:[String:[Position]] = [:]
 
     override func viewDidAppear(animated: Bool) {
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
@@ -60,11 +62,15 @@ class TableView: UITableViewController {
     
     //MARK: UITableViewDelegation
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        switch section {
+        case 0: return names.count
+        case 1: return savedNames.count
+        default: return 0
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -76,8 +82,12 @@ class TableView: UITableViewController {
         guard let nameLabel = cell.textLabel else {
             preconditionFailure("wtf?")
         }
-        nameLabel.text = names[row]
-        cell.tag = row
+        switch indexPath.section{
+        case 0:nameLabel.text = names[row]; cell.tag = row
+        case 1:nameLabel.text = savedNames[row]; cell.tag = names.count + row
+        default:nameLabel.text = "Error"
+        }
+//        cell.tag = row
         return cell
     }
     
@@ -85,27 +95,44 @@ class TableView: UITableViewController {
                             commitEditingStyle editingStyle: UITableViewCellEditingStyle,
                                                forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            names.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath],
-                                             withRowAnimation: .Automatic)
+            switch indexPath.section{
+            case 0:
+                names.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                loadedGrids.removeValueForKey(names[indexPath.row])
+            case 1:
+                savedNames.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath],withRowAnimation: .Automatic)
+                savedGrids.removeValueForKey(savedNames[indexPath.row])
+            default: break
+            }
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let editingRow = (sender as! UITableViewCell).tag
-        let editingString = names[editingRow]
+        var editingString:String!
+        if editingRow < names.count{editingString = names[editingRow]}
+        else{editingString = savedNames[editingRow - names.count]}
         guard let editingVC = segue.destinationViewController as? GridEditViewController
             else {
                 preconditionFailure("Another wtf?")
         }
         editingVC.name = editingString
         editingVC.commit = {
-            self.names[editingRow] = $0
-            let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
-            self.tableView.reloadRowsAtIndexPaths([indexPath],
-                                                  withRowAnimation: .Automatic)
+            self.savedNames.append($0)
+            self.savedGrids[$0] = $1
+//            var indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
+//            if self.savedNames.contains($0){indexPath = NSIndexPath(forRow: editingRow - self.names.count - 1, inSection: 1)}
+//            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
         if let current = loadedGrids[editingString]{
+            editingVC.points = current
+            editingVC.cols = (current.reduce(0){$1.col > $0 ? $1.col : $0} + 1) * 2
+            editingVC.rows = (current.reduce(0){$1.row > $0 ? $1.row : $0} + 1) * 2
+            editingVC.rows > editingVC.cols ? (editingVC.cols = editingVC.rows) : (editingVC.rows = editingVC.cols)
+        }
+        if let current = savedGrids[editingString]{
             editingVC.points = current
             editingVC.cols = (current.reduce(0){$1.col > $0 ? $1.col : $0} + 1) * 2
             editingVC.rows = (current.reduce(0){$1.row > $0 ? $1.row : $0} + 1) * 2

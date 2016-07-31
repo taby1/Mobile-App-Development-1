@@ -18,6 +18,12 @@ class InstrumentationViewController: UIViewController {
         rowDisplay.text = "\(engine.rows)"
         refreshLabel.text = "Refresh Rate: \(refreshSliderValue.value) Hz"
 	}
+    override func viewDidAppear(animated: Bool) {
+        colDisplay.text = "\(engine.cols)"
+        rowDisplay.text = "\(engine.rows)"
+        rowStepper.value = Double(engine.rows)
+        colStepper.value = Double(engine.cols)
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
