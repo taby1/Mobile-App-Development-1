@@ -10,7 +10,7 @@
 
 import UIKit
 
-class TableView: UITableViewController {
+class TableView: UITableViewController{
     
     private var names:Array<String> = []
     private var savedNames:[String] = []
@@ -23,6 +23,7 @@ class TableView: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.gridSaved(_:)), name: "GridSaved", object: nil)
     }
     
     var loadedGrids:[String:[Position]] = [:]
@@ -52,6 +53,17 @@ class TableView: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @objc func gridSaved(notification: NSNotification) {
+        if let data = notification.userInfo, points = data["grid"] as? GridView, name = data["name"] as? String{
+            savedNames.append(name)
+            savedGrids[name] = points.points
+            let itemRow = savedNames.count - 1
+            let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
+            tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+        }
+    }
+    
     
     @IBAction func addName(sender: AnyObject) {
         names.append("Add new name...")
@@ -109,6 +121,8 @@ class TableView: UITableViewController {
             }
         }
     }
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let editingRow = (sender as! UITableViewCell).tag

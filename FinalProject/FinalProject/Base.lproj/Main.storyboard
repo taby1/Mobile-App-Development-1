@@ -205,7 +205,7 @@
         <!--Simulation-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SimulationViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Simulation" id="8rJ-Kc-sve" customClass="SimulationViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -214,7 +214,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-NT-xBi">
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-NT-xBi">
                                 <rect key="frame" x="20" y="20" width="560" height="531"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-Yu-gO7" userLabel="Spacer">
@@ -264,21 +264,24 @@
                                             <constraint firstItem="Ytn-Fa-pdN" firstAttribute="centerY" secondItem="izA-Du-3UJ" secondAttribute="centerY" id="rjq-3x-cu0"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="800" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Tw7-BT-foO">
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="800" misplaced="YES" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Tw7-BT-foO">
                                         <rect key="frame" x="108" y="477" width="344" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IR-zI-vgc">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IR-zI-vgc">
                                                 <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
                                                 <state key="normal" title="Reset"/>
                                                 <connections>
                                                     <action selector="resetButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ddl-dQ-l8W"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-0T-Jo2">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-0T-Jo2">
                                                 <rect key="frame" x="159" y="0.0" width="34" height="30"/>
                                                 <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <segue destination="2Ro-n7-Nsz" kind="show" id="qry-N4-xCG"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-QM-yqQ">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-QM-yqQ">
                                                 <rect key="frame" x="312" y="0.0" width="32" height="30"/>
                                                 <state key="normal" title="Flow"/>
                                                 <connections>
@@ -287,7 +290,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNd-rh-ePJ" userLabel="Spacer">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNd-rh-ePJ" userLabel="Spacer">
                                         <rect key="frame" x="278" y="531" width="5" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -318,6 +321,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="813" y="-154"/>
+        </scene>
+        <!--Rename View Controller-->
+        <scene sceneID="VPM-ye-y1q">
+            <objects>
+                <viewController id="2Ro-n7-Nsz" customClass="RenameViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jh4-9w-HPP"/>
+                        <viewControllerLayoutGuide type="bottom" id="MpR-Ck-qbf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z6X-dX-Q1U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="E0z-TF-shq">
+                                <rect key="frame" x="60" y="87" width="480" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H1b-0n-Q2b">
+                                        <rect key="frame" x="0.0" y="0.0" width="422" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXk-Mx-yFc">
+                                        <rect key="frame" x="446" y="0.0" width="34" height="30"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="save:" destination="2Ro-n7-Nsz" eventType="touchUpInside" id="MwJ-De-iDu"/>
+                                            <segue destination="49e-Tb-3d3" kind="show" id="qe7-tk-EfJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aH2-WF-U3U">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Name" id="jez-Ei-TeZ"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E0z-TF-shq" firstAttribute="width" secondItem="Z6X-dX-Q1U" secondAttribute="width" multiplier="0.8" id="13N-zA-KHg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aH2-WF-U3U" secondAttribute="trailing" constant="-20" id="3vs-Mx-0Jf"/>
+                            <constraint firstItem="E0z-TF-shq" firstAttribute="centerX" secondItem="Z6X-dX-Q1U" secondAttribute="centerX" id="COo-rZ-PIQ"/>
+                            <constraint firstItem="aH2-WF-U3U" firstAttribute="top" secondItem="Z6X-dX-Q1U" secondAttribute="topMargin" constant="20" id="Pgy-lM-DyG"/>
+                            <constraint firstItem="E0z-TF-shq" firstAttribute="top" secondItem="aH2-WF-U3U" secondAttribute="bottom" constant="23" id="Tsa-KY-u95"/>
+                            <constraint firstItem="aH2-WF-U3U" firstAttribute="leading" secondItem="Z6X-dX-Q1U" secondAttribute="leadingMargin" constant="-20" id="cSF-Fu-nNi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="H1b-0n-Q2b" id="1Dr-UD-I8b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ReG-CT-9Zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="-154"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="4Py-vT-3t8">
@@ -567,29 +625,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKH-4b-2dj">
-                                <rect key="frame" x="91" y="56" width="420" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ze-ZI-n0w">
+                                <rect key="frame" x="61" y="68" width="480" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IKH-4b-2dj" firstAttribute="top" secondItem="8td-5X-yQt" secondAttribute="bottom" constant="12" id="2qL-Uh-l2D"/>
-                            <constraint firstItem="IKH-4b-2dj" firstAttribute="centerX" secondItem="mkl-gf-abh" secondAttribute="centerX" id="8UJ-Iu-sJp"/>
-                            <constraint firstItem="IKH-4b-2dj" firstAttribute="width" secondItem="mkl-gf-abh" secondAttribute="width" multiplier="0.7" id="LDs-gd-AuN"/>
+                            <constraint firstItem="7Ze-ZI-n0w" firstAttribute="top" secondItem="8td-5X-yQt" secondAttribute="bottom" constant="24" id="fba-5c-uZ2"/>
+                            <constraint firstItem="7Ze-ZI-n0w" firstAttribute="width" secondItem="mkl-gf-abh" secondAttribute="width" multiplier="0.8" id="meD-Jt-3WK"/>
+                            <constraint firstItem="7Ze-ZI-n0w" firstAttribute="centerX" secondItem="mkl-gf-abh" secondAttribute="centerX" id="ziO-Fo-4AD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rename" id="Whe-PQ-W1G">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Tnc-H6-kqA">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="4Ww-sL-b66">
                             <connections>
-                                <action selector="save:" destination="FkB-fh-DL0" id="5OG-N5-3z9"/>
+                                <action selector="save:" destination="FkB-fh-DL0" id="F2R-Ac-xsU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="nameTextField" destination="IKH-4b-2dj" id="TeH-2v-gbI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLU-zc-x3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -19,7 +19,7 @@ class RenameViewController: UIViewController {
         guard let newText = nameTextField.text, commit = commit
             else { return }
         commit(newText)
-        navigationController!.popViewControllerAnimated(true)
+        if let controller = navigationController {controller.popViewControllerAnimated(true)}
     }
     
     override func viewDidLoad() {
