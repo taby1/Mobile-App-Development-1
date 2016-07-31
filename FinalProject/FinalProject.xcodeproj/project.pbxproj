@@ -16,6 +16,7 @@
 		0CB546B31D45A892000FD9C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB546B21D45A892000FD9C0 /* Assets.xcassets */; };
 		0CB546B61D45A892000FD9C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB546B41D45A892000FD9C0 /* LaunchScreen.storyboard */; };
 		0CB546BE1D45ACD5000FD9C0 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB546BD1D45ACD5000FD9C0 /* Engine.swift */; };
+		686BA01C1D4E6E8D00702229 /* RenameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BA01B1D4E6E8D00702229 /* RenameViewController.swift */; };
 		688380F31D4D31F600341C96 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688380F21D4D31F600341C96 /* Fetcher.swift */; };
 		688380F51D4D331800341C96 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688380F41D4D331800341C96 /* EditViewController.swift */; };
 		688380F71D4D345500341C96 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688380F61D4D345500341C96 /* TableView.swift */; };
@@ -35,6 +36,7 @@
 		0CB546B51D45A892000FD9C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CB546B71D45A892000FD9C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CB546BD1D45ACD5000FD9C0 /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		686BA01B1D4E6E8D00702229 /* RenameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameViewController.swift; sourceTree = "<group>"; };
 		688380F21D4D31F600341C96 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		688380F41D4D331800341C96 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		688380F61D4D345500341C96 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -76,8 +78,9 @@
 				0CB546AB1D45A892000FD9C0 /* InstrumentationViewController.swift */,
 				0CB546AD1D45A892000FD9C0 /* SimulationViewController.swift */,
 				0CB3AEE71D4A9F4200452E10 /* StatisticsViewController.swift */,
-				688380F81D4D594400341C96 /* GridEditViewController.swift */,
 				688380F61D4D345500341C96 /* TableView.swift */,
+				688380F81D4D594400341C96 /* GridEditViewController.swift */,
+				686BA01B1D4E6E8D00702229 /* RenameViewController.swift */,
 				0CB546AF1D45A892000FD9C0 /* Main.storyboard */,
 				688380F21D4D31F600341C96 /* Fetcher.swift */,
 				68A322ED1D4BDDB200DEF1B0 /* GridView.swift */,
@@ -170,6 +173,7 @@
 				0CB546BE1D45ACD5000FD9C0 /* Engine.swift in Sources */,
 				688380F91D4D594400341C96 /* GridEditViewController.swift in Sources */,
 				0CB3AEE81D4A9F4200452E10 /* StatisticsViewController.swift in Sources */,
+				686BA01C1D4E6E8D00702229 /* RenameViewController.swift in Sources */,
 				0CB546AA1D45A892000FD9C0 /* AppDelegate.swift in Sources */,
 				0CB546AC1D45A892000FD9C0 /* InstrumentationViewController.swift in Sources */,
 				688380F51D4D331800341C96 /* EditViewController.swift in Sources */,

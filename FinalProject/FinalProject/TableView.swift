@@ -23,14 +23,21 @@ class TableView: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    var loadedGrids:[String:[Position]] = [:]
 
     override func viewDidAppear(animated: Bool) {
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
             if let json = json, array = json as? Array<Dictionary<String, AnyObject>>{
-                self.names = array.map{if let result = $0["title"] as? String{return result}
-                else{return "Error"}}
+//                self.names = array.map{if let result = $0["title"] as? String{return result}
+//                else{return "Error"}}
+                array.map{
+                    if let result = $0["title"] as? String, points = $0["contents"] as? [[Int]]{self.loadedGrids[result] = points.map{return Position(row: $0[0], col: $0[1])}}
+                    else{self.loadedGrids["Error"] = []}
+                }
+                self.names = Array(self.loadedGrids.keys)
                 let op = NSBlockOperation {
                     self.tableView.reloadData()
                 }
@@ -97,6 +104,12 @@ class TableView: UITableViewController {
             let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
             self.tableView.reloadRowsAtIndexPaths([indexPath],
                                                   withRowAnimation: .Automatic)
+        }
+        if let current = loadedGrids[editingString]{
+            editingVC.points = current
+            editingVC.cols = (current.reduce(0){$1.col > $0 ? $1.col : $0} + 1) * 2
+            editingVC.rows = (current.reduce(0){$1.row > $0 ? $1.row : $0} + 1) * 2
+            editingVC.rows > editingVC.cols ? (editingVC.cols = editingVC.rows) : (editingVC.rows = editingVC.cols)
         }
     }
 

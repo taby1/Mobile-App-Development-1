@@ -16,6 +16,9 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
         engine.delegate = self
         gridView.delegate = self
         engine.refreshRate != 0.0 ? flowButton.setTitle("Pause", forState: .Normal) : flowButton.setTitle("Step", forState: .Normal)
+        gridView.cols = engine.cols
+        gridView.rows = engine.rows
+        engineDidUpdate(engine.grid)    //updating everything in case a design was loaded before this view controller was
 	}
 
 	override func didReceiveMemoryWarning() {
