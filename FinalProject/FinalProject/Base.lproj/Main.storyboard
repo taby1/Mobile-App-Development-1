@@ -214,7 +214,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-NT-xBi">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-NT-xBi">
                                 <rect key="frame" x="20" y="20" width="560" height="531"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-Yu-gO7" userLabel="Spacer">
@@ -264,24 +264,24 @@
                                             <constraint firstItem="Ytn-Fa-pdN" firstAttribute="centerY" secondItem="izA-Du-3UJ" secondAttribute="centerY" id="rjq-3x-cu0"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="800" misplaced="YES" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Tw7-BT-foO">
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="800" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Tw7-BT-foO">
                                         <rect key="frame" x="108" y="477" width="344" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IR-zI-vgc">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IR-zI-vgc">
                                                 <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
                                                 <state key="normal" title="Reset"/>
                                                 <connections>
                                                     <action selector="resetButtonClicked:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ddl-dQ-l8W"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-0T-Jo2">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-0T-Jo2">
                                                 <rect key="frame" x="159" y="0.0" width="34" height="30"/>
                                                 <state key="normal" title="Save"/>
                                                 <connections>
                                                     <segue destination="2Ro-n7-Nsz" kind="show" id="qry-N4-xCG"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-QM-yqQ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNZ-QM-yqQ">
                                                 <rect key="frame" x="312" y="0.0" width="32" height="30"/>
                                                 <state key="normal" title="Flow"/>
                                                 <connections>
@@ -290,7 +290,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNd-rh-ePJ" userLabel="Spacer">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNd-rh-ePJ" userLabel="Spacer">
                                         <rect key="frame" x="278" y="531" width="5" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -625,8 +625,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ze-ZI-n0w">
-                                <rect key="frame" x="61" y="68" width="480" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ze-ZI-n0w">
+                                <rect key="frame" x="60" y="68" width="480" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -645,6 +645,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="7Ze-ZI-n0w" id="RVZ-Da-pkN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLU-zc-x3S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

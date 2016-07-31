@@ -12,8 +12,18 @@ import UIKit
 
 class TableView: UITableViewController{
     
-    private var names:Array<String> = []
-    private var savedNames:[String] = []
+    private static var _names:Array<String> = []
+    private static var _savedNames:[String] = []
+    private var names:Array<String>{
+        get{ return TableView._names}
+        set{TableView._names = newValue}
+    }
+    private var savedNames:[String]{
+        get{return TableView._savedNames}
+        set{TableView._savedNames = newValue}
+    }
+//    private var names:Array<String> = []
+//    private var savedNames:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +34,12 @@ class TableView: UITableViewController{
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.gridSaved(_:)), name: "GridSaved", object: nil)
-    }
-    
-    var loadedGrids:[String:[Position]] = [:]
-    var savedGrids:[String:[Position]] = [:]
-
-    override func viewDidAppear(animated: Bool) {
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
             if let json = json, array = json as? Array<Dictionary<String, AnyObject>>{
-//                self.names = array.map{if let result = $0["title"] as? String{return result}
-//                else{return "Error"}}
+                //                self.names = array.map{if let result = $0["title"] as? String{return result}
+                //                else{return "Error"}}
                 array.map{
                     if let result = $0["title"] as? String, points = $0["contents"] as? [[Int]]{self.loadedGrids[result] = points.map{return Position(row: $0[0], col: $0[1])}}
                     else{self.loadedGrids["Error"] = []}
@@ -49,6 +53,26 @@ class TableView: UITableViewController{
         }
     }
     
+    private static var _loadedGrids:[String:[Position]] = [:]
+    private static var _savedGrids:[String:[Position]] = [:]
+//    var loadedGrids:[String:[Position]] = [:]
+//    var savedGrids:[String:[Position]] = [:]
+    var loadedGrids:[String:[Position]]{
+        get{return TableView._loadedGrids}
+        set{TableView._loadedGrids = newValue}
+    }
+    var savedGrids:[String:[Position]]{
+        get{return TableView._savedGrids}
+        set{TableView._savedGrids = newValue}
+    }
+
+    override func viewDidAppear(animated: Bool) {
+//        let op = NSBlockOperation {
+//            self.tableView.reloadData()
+//        }
+//        NSOperationQueue.mainQueue().addOperation(op)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,19 +80,28 @@ class TableView: UITableViewController{
     
     @objc func gridSaved(notification: NSNotification) {
         if let data = notification.userInfo, points = data["grid"] as? GridView, name = data["name"] as? String{
-            savedNames.append(name)
+//            savedNames.append(name)
             savedGrids[name] = points.points
-            let itemRow = savedNames.count - 1
-            let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
-            tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+            add(name)
+//            let itemRow = savedNames.count - 1
+//            let itemPath = NSIndexPath(forRow:itemRow, inSection: 1)
+//            self.tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
         }
     }
     
     
     @IBAction func addName(sender: AnyObject) {
-        names.append("Add new name...")
-        let itemRow = names.count - 1
-        let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
+        add("Add new name..")
+//        names.append("Add new name...")
+//        let itemRow = names.count - 1
+//        let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
+//        tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+    }
+    
+    func add(name:String){
+        savedNames.append(name)
+        let itemRow = savedNames.count - 1
+        let itemPath = NSIndexPath(forRow:itemRow, inSection: 1)
         tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
     }
     
@@ -136,8 +169,9 @@ class TableView: UITableViewController{
         editingVC.name = editingString
         editingVC.commit = {
 //            editingRow < self.savedNames.count ? self.savedNames[editingRow] = $0 :
-            self.savedNames.append($0)
+//            self.savedNames.append($0)
             self.savedGrids[$0] = $1
+            self.add($0)
         }
         editingVC.save = {
             self.savedNames.contains(editingString) ? (self.savedGrids[editingString] = $0) : (self.loadedGrids[editingString] = $0)
@@ -153,7 +187,7 @@ class TableView: UITableViewController{
             editingVC.cols = (current.reduce(0){$1.col > $0 ? $1.col : $0} + 1) * 2
             editingVC.rows = (current.reduce(0){$1.row > $0 ? $1.row : $0} + 1) * 2
             editingVC.rows > editingVC.cols ? (editingVC.cols = editingVC.rows) : (editingVC.rows = editingVC.cols)
-        }
+        }   //making the gridview square
     }
 
 }
