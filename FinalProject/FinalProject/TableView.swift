@@ -12,7 +12,7 @@ import UIKit
 
 class TableView: UITableViewController{
     
-    private static var _names:Array<String> = []
+    static var _names:Array<String> = []
     private static var _savedNames:[String] = []
     private var names:Array<String>{
         get{ return TableView._names}
@@ -81,12 +81,12 @@ class TableView: UITableViewController{
     @objc func gridSaved(notification: NSNotification) {
         if let data = notification.userInfo, points = data["grid"] as? GridView, name = data["name"] as? String{
 //            savedNames.append(name)
-            savedGrids[name] = points.points
-            add(name)
+            savedGrids[self.add(name)] = points.points
 //            let itemRow = savedNames.count - 1
 //            let itemPath = NSIndexPath(forRow:itemRow, inSection: 1)
 //            self.tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
         }
+        return
     }
     
     
@@ -98,11 +98,19 @@ class TableView: UITableViewController{
 //        tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
     }
     
-    func add(name:String){
-        savedNames.append(name)
+    func add(name:String) -> String{
+        var runningName = name
+        while(savedNames.contains(runningName)){runningName += "(copy)"}
+        savedNames.append(runningName)
+//        savedNames.contains(name) ? savedNames.append(name + "(copy)"): savedNames.append(name)
         let itemRow = savedNames.count - 1
         let itemPath = NSIndexPath(forRow:itemRow, inSection: 1)
         tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+        let op = NSBlockOperation {
+            self.tableView.reloadData()
+        }
+        NSOperationQueue.mainQueue().addOperation(op)
+        return runningName
     }
     
     //MARK: UITableViewDelegation
@@ -170,8 +178,8 @@ class TableView: UITableViewController{
         editingVC.commit = {
 //            editingRow < self.savedNames.count ? self.savedNames[editingRow] = $0 :
 //            self.savedNames.append($0)
-            self.savedGrids[$0] = $1
-            self.add($0)
+            self.savedGrids[self.add($0)] = $1
+            
         }
         editingVC.save = {
             self.savedNames.contains(editingString) ? (self.savedGrids[editingString] = $0) : (self.loadedGrids[editingString] = $0)
