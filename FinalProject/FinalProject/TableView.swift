@@ -97,13 +97,14 @@ class TableView: UITableViewController {
         if editingStyle == .Delete {
             switch indexPath.section{
             case 0:
-                names.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                loadedGrids.removeValueForKey(names[indexPath.row])
+                break
+//                names.removeAtIndex(indexPath.row)
+//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+//                loadedGrids.removeValueForKey(names[indexPath.row])
             case 1:
+                savedGrids.removeValueForKey(savedNames[indexPath.row])
                 savedNames.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath],withRowAnimation: .Automatic)
-                savedGrids.removeValueForKey(savedNames[indexPath.row])
             default: break
             }
         }
@@ -113,18 +114,19 @@ class TableView: UITableViewController {
         let editingRow = (sender as! UITableViewCell).tag
         var editingString:String!
         if editingRow < names.count{editingString = names[editingRow]}
-        else{editingString = savedNames[editingRow - names.count]}
+        else{editingString = ((sender as! UITableViewCell).textLabel?.text)!}
         guard let editingVC = segue.destinationViewController as? GridEditViewController
             else {
                 preconditionFailure("Another wtf?")
         }
         editingVC.name = editingString
         editingVC.commit = {
+//            editingRow < self.savedNames.count ? self.savedNames[editingRow] = $0 :
             self.savedNames.append($0)
             self.savedGrids[$0] = $1
-//            var indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
-//            if self.savedNames.contains($0){indexPath = NSIndexPath(forRow: editingRow - self.names.count - 1, inSection: 1)}
-//            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+        editingVC.save = {
+            self.savedNames.contains(editingString) ? (self.savedGrids[editingString] = $0) : (self.loadedGrids[editingString] = $0)
         }
         if let current = loadedGrids[editingString]{
             editingVC.points = current

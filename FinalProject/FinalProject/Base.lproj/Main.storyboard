@@ -505,12 +505,21 @@
                                             <action selector="load:" destination="zRN-YV-luj" eventType="touchUpInside" id="aaE-c5-OTD"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRH-eZ-C5r">
+                                        <rect key="frame" x="0.0" y="206" width="34" height="30"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonClicked:" destination="zRN-YV-luj" eventType="touchUpInside" id="tjT-Dh-Sui"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="iYs-C1-ACt" firstAttribute="width" relation="lessThanOrEqual" secondItem="hvJ-K1-In7" secondAttribute="width" multiplier="0.8" id="0Do-rh-mhM"/>
+                                    <constraint firstAttribute="bottom" secondItem="fRH-eZ-C5r" secondAttribute="bottom" constant="20" id="3gq-SZ-VvJ"/>
                                     <constraint firstAttribute="trailing" secondItem="mkJ-Ic-zxO" secondAttribute="trailing" id="AXY-83-zFc"/>
                                     <constraint firstItem="iYs-C1-ACt" firstAttribute="centerX" secondItem="hvJ-K1-In7" secondAttribute="centerX" id="ONx-lF-LNC"/>
+                                    <constraint firstItem="fRH-eZ-C5r" firstAttribute="leading" secondItem="hvJ-K1-In7" secondAttribute="leading" id="R5f-Ud-SOy"/>
                                     <constraint firstItem="iYs-C1-ACt" firstAttribute="height" relation="lessThanOrEqual" secondItem="hvJ-K1-In7" secondAttribute="height" multiplier="0.8" id="YMD-gT-xZG"/>
                                     <constraint firstAttribute="bottom" secondItem="mkJ-Ic-zxO" secondAttribute="bottom" constant="20" id="bLU-FX-wCa"/>
                                     <constraint firstItem="iYs-C1-ACt" firstAttribute="centerY" secondItem="hvJ-K1-In7" secondAttribute="centerY" id="cYe-Ao-5ne"/>
@@ -539,6 +548,7 @@
                     <connections>
                         <outlet property="gridView" destination="iYs-C1-ACt" id="gpi-mq-qim"/>
                         <outlet property="loadButton" destination="mkJ-Ic-zxO" id="qtS-pL-dgu"/>
+                        <outlet property="saveButton" destination="fRH-eZ-C5r" id="cZv-IK-gMQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16u-Sq-IDD" userLabel="First Responder" sceneMemberID="firstResponder"/>

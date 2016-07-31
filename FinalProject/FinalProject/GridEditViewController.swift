@@ -12,11 +12,13 @@ class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate
 
     var name:String?
     var commit: ((name: String, points:[Position]) -> Void)?
+    var save: ((points:[Position]) -> Void)?
     var points:[Position]?
     var rows:Int! = 5
     var cols:Int! = 5
+    var section:Int?
     
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func saveAs(sender: AnyObject) {
         guard let newText = name, commit = commit
             else { return }
         commit(name: newText, points:self.gridView.points)
@@ -30,6 +32,11 @@ class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate
         navigationController?.popViewControllerAnimated(false)
     }
     @IBOutlet weak var loadButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBAction func saveButtonClicked(sender: AnyObject) {
+        if let save = save{save(points: gridView.points)}
+        navigationController!.popViewControllerAnimated(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +63,7 @@ class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate
         renameVC.name = name
         renameVC.commit = {
             self.name = $0
-            self.save(Grid(rows: 0, cols: 0))   //Couldn't think of a good placeholder object
+            self.saveAs(Grid(rows: 0, cols: 0))   //Couldn't think of a good placeholder object
         }
     }
     
