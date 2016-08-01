@@ -575,7 +575,7 @@
                                 <rect key="frame" x="0.0" y="102" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s9f-wC-JMr" id="Sua-RH-c3a">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -604,7 +604,7 @@
         <!--Editor-->
         <scene sceneID="zib-sd-tSx">
             <objects>
-                <viewController id="zRN-YV-luj" customClass="GridEditViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="zRN-YV-luj" customClass="GridEditViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qt3-PD-gYn"/>
                         <viewControllerLayoutGuide type="bottom" id="KhC-NQ-Znm"/>
