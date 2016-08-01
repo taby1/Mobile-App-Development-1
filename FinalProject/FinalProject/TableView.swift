@@ -106,10 +106,10 @@ class TableView: UITableViewController{
         let itemRow = savedNames.count - 1
         let itemPath = NSIndexPath(forRow:itemRow, inSection: 1)
         tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
-        let op = NSBlockOperation {
-            self.tableView.reloadData()
-        }
-        NSOperationQueue.mainQueue().addOperation(op)
+//        let op = NSBlockOperation {
+//            self.tableView.reloadData()
+//        }
+//        NSOperationQueue.mainQueue().addOperation(op)
         return runningName
     }
     

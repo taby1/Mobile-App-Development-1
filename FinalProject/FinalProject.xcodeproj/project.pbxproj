@@ -16,6 +16,7 @@
 		0CB546B31D45A892000FD9C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CB546B21D45A892000FD9C0 /* Assets.xcassets */; };
 		0CB546B61D45A892000FD9C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CB546B41D45A892000FD9C0 /* LaunchScreen.storyboard */; };
 		0CB546BE1D45ACD5000FD9C0 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB546BD1D45ACD5000FD9C0 /* Engine.swift */; };
+		0CCCA29C1D4FE20300CDC583 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCA29B1D4FE20300CDC583 /* DataStorage.swift */; };
 		686BA01C1D4E6E8D00702229 /* RenameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BA01B1D4E6E8D00702229 /* RenameViewController.swift */; };
 		688380F31D4D31F600341C96 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688380F21D4D31F600341C96 /* Fetcher.swift */; };
 		688380F51D4D331800341C96 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688380F41D4D331800341C96 /* EditViewController.swift */; };
@@ -36,6 +37,7 @@
 		0CB546B51D45A892000FD9C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CB546B71D45A892000FD9C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CB546BD1D45ACD5000FD9C0 /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		0CCCA29B1D4FE20300CDC583 /* DataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		686BA01B1D4E6E8D00702229 /* RenameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameViewController.swift; sourceTree = "<group>"; };
 		688380F21D4D31F600341C96 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		688380F41D4D331800341C96 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				688380F81D4D594400341C96 /* GridEditViewController.swift */,
 				686BA01B1D4E6E8D00702229 /* RenameViewController.swift */,
 				0CB546AF1D45A892000FD9C0 /* Main.storyboard */,
+				0CCCA29B1D4FE20300CDC583 /* DataStorage.swift */,
 				688380F21D4D31F600341C96 /* Fetcher.swift */,
 				68A322ED1D4BDDB200DEF1B0 /* GridView.swift */,
 				0CB546BD1D45ACD5000FD9C0 /* Engine.swift */,
@@ -174,6 +177,7 @@
 				688380F91D4D594400341C96 /* GridEditViewController.swift in Sources */,
 				0CB3AEE81D4A9F4200452E10 /* StatisticsViewController.swift in Sources */,
 				686BA01C1D4E6E8D00702229 /* RenameViewController.swift in Sources */,
+				0CCCA29C1D4FE20300CDC583 /* DataStorage.swift in Sources */,
 				0CB546AA1D45A892000FD9C0 /* AppDelegate.swift in Sources */,
 				0CB546AC1D45A892000FD9C0 /* InstrumentationViewController.swift in Sources */,
 				688380F51D4D331800341C96 /* EditViewController.swift in Sources */,
@@ -295,6 +299,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = taby1.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -306,6 +311,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = taby1.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

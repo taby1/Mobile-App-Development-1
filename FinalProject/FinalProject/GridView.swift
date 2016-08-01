@@ -69,7 +69,7 @@ import UIKit
             for row in (minY..<maxY){
                 for col in (minX..<maxX){
                     let rect:CGRect = CGRect(x: CGFloat(col) * xSize, y: CGFloat(row) * ySize, width: xSize, height: ySize)
-                    CellState.Living.allValues().reduce(emptyColor){grid[(row:row, col:col)] == $1 ? colors[$1]! : $0}.setFill()
+					colors[grid[(row:row, col:col)]]!.setFill()
                     UIBezierPath(rect: rect).fill()
                 }
             }
@@ -84,7 +84,6 @@ import UIKit
             self.manageTouch(touch)
             let currentCell = getRect(nowTouch.y, x: nowTouch.x)
             if let delegate = delegate{delegate.touchChange(currentCell.row, col: currentCell.col, newState: grid[(row:currentCell.row, col: currentCell.col)].toggle())}
-//            grid[(row:currentCell.row, col:currentCell.col)] = grid[(row:currentCell.row, col:currentCell.col)].toggle()
             let xSize = bounds.width / CGFloat(cols)
             let ySize = bounds.height / CGFloat(rows)
             self.setNeedsDisplayInRect(CGRect(x: CGFloat(currentCell.col) * xSize, y: CGFloat(currentCell.row) * ySize, width: xSize, height: ySize))
