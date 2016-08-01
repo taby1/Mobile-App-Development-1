@@ -27,12 +27,9 @@ class TableView: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+//        view.addGestureRecognizer(tap)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.gridSaved(_:)), name: "GridSaved", object: nil)
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
@@ -52,6 +49,9 @@ class TableView: UITableViewController{
             }
         }
     }
+//    func dismissKeyboard(){
+//        view.endEditing(true)
+//    }
     
     private static var _loadedGrids:[String:[Position]] = [:]
     private static var _savedGrids:[String:[Position]] = [:]
