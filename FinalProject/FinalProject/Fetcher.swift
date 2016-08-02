@@ -14,7 +14,7 @@ class Fetcher: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     
     func session() -> NSURLSession {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.timeoutIntervalForRequest = 30.0
+        configuration.timeoutIntervalForRequest = 5.0
         return NSURLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }
     

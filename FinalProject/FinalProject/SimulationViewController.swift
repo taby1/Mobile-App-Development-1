@@ -69,7 +69,7 @@ class SimulationViewController: UIViewController, EngineDelegate, GridViewDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let renamveVC = segue.destinationViewController as? RenameViewController else{preconditionFailure("ah man")}
         renamveVC.commit = {
-            NSNotificationCenter.defaultCenter().postNotificationName("GridSaved", object: nil, userInfo: ["grid":self.gridView, "name":$0])
+            NSNotificationCenter.defaultCenter().postNotificationName("GridSaved", object: nil, userInfo: ["grid":PointsContainer(poonts: self.gridView.points), "name":$0])
         }
     }
 }

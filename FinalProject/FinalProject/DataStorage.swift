@@ -27,3 +27,10 @@ class StaticPoints{
 	var savedGrids:[Int:[Position]] = [:]
 	var loadedGrids:[Int:[Position]] = [:]
 }
+
+class PointsContainer{
+    var points:[(Position)] = []
+    init(poonts:[(Position)]){
+        points = poonts
+    }
+}

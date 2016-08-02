@@ -10,31 +10,8 @@
 
 import UIKit
 
-class TableView: UITableViewController{
+class TableView: UITableViewController, UITextFieldDelegate{
     
-//    static var _names:Array<String> = []
-//    private static var _savedNames:[String] = []
-//    private var names:Array<String>{
-//        get{ return TableView._names}
-//        set{TableView._names = newValue}
-//    }
-//    private var savedNames:[String]{
-//        get{return TableView._savedNames}
-//        set{TableView._savedNames = newValue}
-//    }
-//    private var names:Array<String> = []
-//    private var savedNames:[String] = []//    private static var _loadedGrids:[String:[Position]] = [:]
-//    private static var _savedGrids:[String:[Position]] = [:]
-//    var loadedGrids:[String:[Position]] = [:]
-//    var savedGrids:[String:[Position]] = [:]
-//    var loadedGrids:[String:[Position]]{
-//        get{return TableView._loadedGrids}
-//        set{TableView._loadedGrids = newValue}
-//    }
-//    var savedGrids:[String:[Position]]{
-//        get{return TableView._savedGrids}
-//        set{TableView._savedGrids = newValue}
-//    }
 	var names = StaticNames().sharedInstance
 	var grids = StaticPoints().sharedInstance
 	
@@ -42,15 +19,14 @@ class TableView: UITableViewController{
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.gridSaved(_:)), name: "GridSaved", object: nil)
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
+        URLField.delegate = self
+        guard grids.loadedGrids.isEmpty else{return}
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
             if let json = json, array = json as? Array<Dictionary<String, AnyObject>>{
-                //                self.names = array.map{if let result = $0["title"] as? String{return result}
-                //                else{return "Error"}}
                 array.reduce(0){
                     if let name = $1["title"] as? String, points = $1["contents"] as? [[Int]]{
-						self.add(name)
-						self.grids.loadedGrids[self.names.tagOf(name)] = points.map{return Position(row: $0[0], col: $0[1])}
+						self.grids.loadedGrids[self.addToLoad(name)] = points.map{return Position(row: $0[0], col: $0[1])}
 					}
 					return $0 + 1
                 }
@@ -70,21 +46,57 @@ class TableView: UITableViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func gridSaved(notification: NSNotification) {
-        if let data = notification.userInfo, points = data["grid"] as? GridView, name = data["name"] as? String{
-//            savedNames.append(name)
-			
-//            savedGrids[self.add(name)] = points.points
-			add(name)
-			grids.savedGrids[names.tagOf(name)] = points.points
-			
-//            let itemRow = savedNames.count - 1
-//            let itemPath = NSIndexPath(forRow:itemRow, inSection: 1)
-//            self.tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
-        }
-        return
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {    //can't make gesture recognizer or touchesBegan() work, so this is it.
+        URLField.resignFirstResponder()
+        return true
     }
     
+    @IBOutlet weak var URLField: UITextField!
+    @IBAction func reloadClicked(sender: AnyObject) {
+        URLField.endEditing(true)
+        print("Click")
+        guard let text = URLField.text, url = NSURL(string: text) else{URLField.text = ""; return}
+        let fetcher = Fetcher()
+        fetcher.requestJSON(url) { (json, message) in
+            if let json = json, array = json as? Array<Dictionary<String, AnyObject>>{
+                self.names.loadedNames.removeAll()
+                self.grids.loadedGrids.removeAll()
+                self.URLField.text = ""
+                array.reduce(0){
+                    if let name = $1["title"] as? String, points = $1["contents"] as? [[Int]]{
+                        self.grids.loadedGrids[self.addToLoad(name)] = points.map{return Position(row: $0[0], col: $0[1])}
+                    }
+                    return $0 + 1
+                }
+                let op = NSBlockOperation {
+                    self.tableView.reloadData()
+                }
+                NSOperationQueue.mainQueue().addOperation(op)
+            }
+            if let message = message{
+                let op = NSBlockOperation{
+                    let alert = UIAlertController(title: "Invalid URL", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                NSOperationQueue.mainQueue().addOperation(op)
+            }
+            if json == nil && message == nil{
+                let op = NSBlockOperation{
+                    let alert = UIAlertController(title: "Network Error", message: "Invalid JSON received", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.URLField.text = ""
+                }
+                NSOperationQueue.mainQueue().addOperation(op)
+            }
+        }
+    }
+    
+    override func viewDidUnload(){
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
     @IBAction func addName(sender: AnyObject) {
 		let defaultGrid = GridView()
@@ -93,21 +105,35 @@ class TableView: UITableViewController{
         grids.savedGrids[add("Add new name..")] = defaultGrid.points
     }
     
+    //MARK: Stuff for adding rows
+    @objc func gridSaved(notification: NSNotification) {
+        if let data = notification.userInfo, points = data["grid"] as? PointsContainer, name = data["name"] as? String{
+            let tag = add(name)
+            grids.savedGrids[tag] = points.points
+        }
+    }
     func add(name:String) -> Int{
 		var tag = 0
-		while(names.savedNames.keys.contains(tag)){tag += 1}	//I'm actually not sure why this compiles, but it looks like it should work.
+		while(names.tags.contains(tag)){tag += 1}	//I'm actually not sure why this compiles, but it looks like it should work.
         var runningName = name
-		let existingNames = names.savedNames.map{$0.1}
+        let existingNames = (names.savedNames.map{$0.1} + names.loadedNames.map{$0.1})
         while(existingNames.contains(runningName)){runningName += "(copy)"}
 		names.savedNames[tag] = runningName
         let itemRow = names.savedNames.count - 1
         let itemPath = NSIndexPath(forRow:itemRow, inSection: 1)
         tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
-		let op = NSBlockOperation {
-			self.tableView.reloadData()
-		}
+		let op = NSBlockOperation {self.tableView.reloadData()}
 		NSOperationQueue.mainQueue().addOperation(op)
 		return tag
+    }
+    func addToLoad(name:String) -> Int{
+        var tag = 0
+        while(names.tags.contains(tag)){tag += 1}	//I'm actually not sure why this compiles, but it looks like it should work.
+        var runningName = name
+        let existingNames = (names.savedNames.map{$0.1} + names.loadedNames.map{$0.1})
+        while(existingNames.contains(runningName)){runningName += "(copy)"}
+        names.loadedNames[tag] = runningName
+        return tag
     }
 	
     //MARK: UITableViewDelegation
@@ -175,8 +201,6 @@ class TableView: UITableViewController{
         }
         editingVC.name = editingString
         editingVC.commit = {
-//            editingRow < self.savedNames.count ? self.savedNames[editingRow] = $0 :
-//            self.savedNames.append($0)
 			//$1 is the grid, $0 is the new name
 			
 			self.grids.savedGrids[self.add($0)] = $1
@@ -186,6 +210,12 @@ class TableView: UITableViewController{
 //            self.savedNames.contains(editingString) ? (self.savedGrids[editingString] = $0) : (self.loadedGrids[editingString] = $0)
 //			self.grids.savedGrids.keys.contains(tag) ? (self.grids.savedGrids[tag] = $0) : (self.grids.loadedGrids[tag] = $0)
 			self.grids.savedGrids[tag] = $0
+        }
+        if let current = grids.loadedGrids[tag]{
+            editingVC.points = current
+            editingVC.cols = (current.reduce(0){$1.col > $0 ? $1.col : $0} + 1) * 2
+            editingVC.rows = (current.reduce(0){$1.row > $0 ? $1.row : $0} + 1) * 2
+            editingVC.rows > editingVC.cols ? (editingVC.cols = editingVC.rows) : (editingVC.rows = editingVC.cols)
         }
         if let current = grids.savedGrids[tag]{
             editingVC.points = current
