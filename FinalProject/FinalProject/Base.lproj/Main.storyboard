@@ -261,7 +261,7 @@
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="izA-Du-3UJ">
                                         <rect key="frame" x="66" y="24" width="429" height="429"/>
                                         <subviews>
-                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                            <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="429" height="429"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -651,7 +651,7 @@
                                         <rect key="frame" x="20" y="206" width="34" height="30"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
-                                            <action selector="saveButtonClicked:" destination="zRN-YV-luj" eventType="touchUpInside" id="tjT-Dh-Sui"/>
+                                            <segue destination="CNT-Z2-Zmj" kind="show" id="Sdb-hI-OTb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -697,10 +697,10 @@
             </objects>
             <point key="canvasLocation" x="2943" y="-905"/>
         </scene>
-        <!--Rename-->
+        <!--Save As-->
         <scene sceneID="u68-yB-hyj">
             <objects>
-                <viewController id="FkB-fh-DL0" customClass="RenameViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Save As" id="FkB-fh-DL0" customClass="RenameViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8td-5X-yQt"/>
                         <viewControllerLayoutGuide type="bottom" id="g71-t9-jcE"/>
@@ -709,7 +709,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ze-ZI-n0w">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="7Ze-ZI-n0w">
                                 <rect key="frame" x="60" y="68" width="480" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -722,7 +722,7 @@
                             <constraint firstItem="7Ze-ZI-n0w" firstAttribute="centerX" secondItem="mkl-gf-abh" secondAttribute="centerX" id="ziO-Fo-4AD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Rename" id="Whe-PQ-W1G">
+                    <navigationItem key="navigationItem" title="Save As" id="Whe-PQ-W1G">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="4Ww-sL-b66">
                             <connections>
                                 <action selector="save:" destination="FkB-fh-DL0" id="F2R-Ac-xsU"/>
@@ -752,6 +752,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1l-UI-MXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1534" y="-912"/>
+        </scene>
+        <!--Save-->
+        <scene sceneID="Vws-zW-Khu">
+            <objects>
+                <viewController title="Save" id="CNT-Z2-Zmj" customClass="RenameViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FcH-Eb-CXs"/>
+                        <viewControllerLayoutGuide type="bottom" id="300-SM-ZGu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wt3-ha-5W7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="3oX-lq-JpM">
+                                <rect key="frame" x="60" y="68" width="480" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3oX-lq-JpM" firstAttribute="centerX" secondItem="wt3-ha-5W7" secondAttribute="centerX" id="9lA-Ww-v7t"/>
+                            <constraint firstItem="3oX-lq-JpM" firstAttribute="top" secondItem="FcH-Eb-CXs" secondAttribute="bottom" constant="24" id="M1i-Ms-Cwb"/>
+                            <constraint firstItem="3oX-lq-JpM" firstAttribute="width" secondItem="wt3-ha-5W7" secondAttribute="width" multiplier="0.8" id="a5t-aS-woh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Save As" id="l8c-D2-IQ2">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="BtQ-US-9hA">
+                            <connections>
+                                <action selector="save:" destination="CNT-Z2-Zmj" id="eaj-Uz-8zc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="3oX-lq-JpM" id="aNY-yh-eto"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BsC-wo-4gi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2943" y="-423"/>
         </scene>
     </scenes>
     <resources>

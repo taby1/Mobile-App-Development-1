@@ -94,15 +94,12 @@ class TableView: UITableViewController, UITextFieldDelegate{
         }
     }
     
-//    override func viewDidUnload(){
-//        NSNotificationCenter.defaultCenter().removeObserver(self)
-//    }
-    
     @IBAction func addName(sender: AnyObject) {
-		let defaultGrid = GridView()
-		defaultGrid.rows = 5
-		defaultGrid.cols = 5
-        grids.savedGrids[add("Add new name..")] = defaultGrid.points
+//		let defaultGrid = GridView()
+//		defaultGrid.rows = 5
+//		defaultGrid.cols = 5
+//        grids.savedGrids[add("Add new name..")] = defaultGrid.points
+        add("Add new grid...")
     }
     
     //MARK: Stuff for adding rows
@@ -203,14 +200,13 @@ class TableView: UITableViewController, UITextFieldDelegate{
         editingVC.name = editingString
         editingVC.commit = {
 			//$1 is the grid, $0 is the new name
-			
 			self.grids.savedGrids[self.add($0)] = $1
-            
         }
-        editingVC.save = {
-//            self.savedNames.contains(editingString) ? (self.savedGrids[editingString] = $0) : (self.loadedGrids[editingString] = $0)
-//			self.grids.savedGrids.keys.contains(tag) ? (self.grids.savedGrids[tag] = $0) : (self.grids.loadedGrids[tag] = $0)
-			self.grids.savedGrids[tag] = $0
+        editingVC.save = {     //$1 is grid, $0 is new name
+			self.grids.savedGrids[tag] = $1
+            self.names.savedNames[tag] = $0
+            let op = NSBlockOperation {self.tableView.reloadData()}
+            NSOperationQueue.mainQueue().addOperation(op)
         }
         if let current = grids.loadedGrids[tag]{
             editingVC.points = current

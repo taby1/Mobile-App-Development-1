@@ -145,22 +145,6 @@ class StandardEngine:EngineProtocol{
     }
 	
 	func step() -> GridProtocol{
-//		var tempState:[Position] = []
-//		self.grid.ofInterest.map{$0.state.isLiving() ? self.neighbors($0.position).map{tempState.append($0)} : []}
-//		var livingNeighbors:[(pos:Position, num:Int)] = []
-//		tempState.map{
-//            let g = $0
-//            if(livingNeighbors.reduce(0){$1.pos == g ? $0 + 1 : $0} == 0){ livingNeighbors.append(($0,numberIn($0, within:tempState)))}
-//		}
-//		var newGrid = Grid(rows: self.rows, cols: self.cols)
-//		livingNeighbors.map{
-//			switch $0.num{
-//			case 2 where grid[$0.pos].isLiving(), 3 where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Living
-//			case 3 where !grid[$0.pos].isLiving(): newGrid[$0.pos] = .Born
-//			case _ where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Died
-//			default: newGrid[$0.pos] = .Empty
-//			}
-//		}
         var nextGen:[Coordinates:Int] = [:]
 		grid.ofInterest.filter{$0.state.isLiving()}.map{	//iterates through living Cell()s
 			neighbors($0.position).map{	//for every living cell iterates through it's neighbors

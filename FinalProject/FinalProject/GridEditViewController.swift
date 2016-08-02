@@ -12,7 +12,7 @@ class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate
 
     var name:String?
     var commit: ((name: String, points:[Position]) -> Void)?
-    var save: ((points:[Position]) -> Void)?
+    var save: ((name: String, points:[Position]) -> Void)?
     var points:[Position]?
     var rows:Int! = 5
     var cols:Int! = 5
@@ -34,7 +34,7 @@ class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate
     @IBOutlet weak var loadButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBAction func saveButtonClicked(sender: AnyObject) {
-        if let save = save{save(points: gridView.points)}
+        if let save = save, name = name{save(name: name, points: gridView.points)}
         navigationController!.popViewControllerAnimated(true)
     }
     
@@ -60,10 +60,19 @@ class GridEditViewController: UIViewController, EngineDelegate, GridViewDelegate
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let renameVC = segue.destinationViewController as? RenameViewController, name = name else{preconditionFailure("you done done it")}
-        renameVC.name = name
-        renameVC.commit = {
-            self.name = $0
-            self.saveAs(Grid(rows: 0, cols: 0))   //Couldn't think of a good placeholder object
+        if renameVC.title == "Save As"{
+            renameVC.name = name
+            renameVC.commit = {
+                self.name = $0
+                self.saveAs(Grid(rows: 0, cols: 0))   //Couldn't think of a good placeholder object
+            }
+        }
+        else if renameVC.title == "Save"{
+            renameVC.name = name
+            renameVC.commit = {
+                self.name = $0
+                self.saveButtonClicked(self)
+            }
         }
     }
     
