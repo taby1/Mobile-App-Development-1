@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController, EngineDelegate, GridViewDelegate{
+class SimulationViewController: UIViewController, EngineDelegate, GridViewDelegate{ //Icon from http://www.iconbeast.com
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

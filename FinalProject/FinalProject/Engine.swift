@@ -180,7 +180,3 @@ class StandardEngine:EngineProtocol{
 		( 1, -1), ( 1, 0), ( 1, 1)
 	]
 }
-
-//note: call neighbors on all living cells both to generate list of cells to check and to determine future state of each already living cell, now you don't need to recheck already living cells b/c you just checked them - in this way step should only need to call neighbors on each cell of interest once
-
-

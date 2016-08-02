@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatisticsViewController: UIViewController {
+class StatisticsViewController: UIViewController { //Icon from http://www.iconbeast.com
 
     override func viewDidLoad() {
         super.viewDidLoad()

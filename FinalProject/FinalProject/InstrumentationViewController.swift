@@ -8,8 +8,7 @@
 
 import UIKit
 
-class InstrumentationViewController: UIViewController {
-
+class InstrumentationViewController: UIViewController { //Icon from http://www.iconbeast.com
 	override func viewDidLoad() {
 		super.viewDidLoad()
         engine.cols = Int(colStepper.value)

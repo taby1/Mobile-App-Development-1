@@ -94,17 +94,12 @@ import UIKit
             self.manageTouch(touch)
         }
     }
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for _ in touches{
-        }
-    }
     func manageTouch(touch: UITouch){
         let prevTouch = touch.previousLocationInView(self)
         let nowTouch = touch.locationInView(self)
         if getRect(prevTouch.y, x: prevTouch.x) != getRect(nowTouch.y, x: nowTouch.x) { //if the touch moved over into a new cell
             let currentCell = getRect(nowTouch.y, x: nowTouch.x)
             if let delegate = delegate{delegate.touchChange(currentCell.row, col: currentCell.col, newState: grid[(row:currentCell.row, col: currentCell.col)].toggle())}
-//            grid[(row:currentCell.row, col:currentCell.col)] = grid[(row:currentCell.row, col:currentCell.col)].toggle()
             let xSize = bounds.width / CGFloat(cols)
             let ySize = bounds.height / CGFloat(rows)
             self.setNeedsDisplayInRect(CGRect(x: CGFloat(currentCell.col) * xSize, y: CGFloat(currentCell.row) * ySize, width: xSize, height: ySize))

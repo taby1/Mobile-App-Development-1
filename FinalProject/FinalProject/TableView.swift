@@ -39,23 +39,15 @@ class TableView: UITableViewController, UITextFieldDelegate{
             }
         }
     }
-
-	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {    //can't make gesture recognizer or touchesBegan() work, so this is it.
-        URLField.resignFirstResponder()
-        return true
-    }
-    
     @IBOutlet weak var URLField: UITextField!
     @IBAction func reloadClicked(sender: AnyObject) {
         URLField.endEditing(true)
-        print("Click")
         guard let text = URLField.text, url = NSURL(string: text) else{URLField.text = ""; return}
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
@@ -93,16 +85,18 @@ class TableView: UITableViewController, UITextFieldDelegate{
             }
         }
     }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {    //can't make gesture recognizer or touchesBegan() work, so this is it.
+        URLField.resignFirstResponder()
+        return true
+    }
     
+    
+    
+    //MARK: Stuff for adding rows
     @IBAction func addName(sender: AnyObject) {
-//		let defaultGrid = GridView()
-//		defaultGrid.rows = 5
-//		defaultGrid.cols = 5
-//        grids.savedGrids[add("Add new name..")] = defaultGrid.points
         add("Add new grid...")
     }
     
-    //MARK: Stuff for adding rows
     @objc func gridSaved(notification: NSNotification) {
         if let data = notification.userInfo, points = data["grid"] as? PointsContainer, name = data["name"] as? String{
             let tag = add(name)
@@ -119,8 +113,10 @@ class TableView: UITableViewController, UITextFieldDelegate{
 		names.savedNames[tag] = runningName
         let itemRow = names.savedNames.count - 1
         let itemPath = NSIndexPath(forRow:itemRow, inSection: 1)
-        tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
-		let op = NSBlockOperation {self.tableView.reloadData()}
+		let op = NSBlockOperation {
+            self.tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+            self.tableView.reloadData()
+        }
 		NSOperationQueue.mainQueue().addOperation(op)
 		return tag
     }

@@ -118,7 +118,7 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="zN6-HD-Mec">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="0.10000000000000001" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="zN6-HD-Mec">
                                                         <rect key="frame" x="-2" y="22" width="452" height="31"/>
                                                         <connections>
                                                             <action selector="refreshSliderMoved:" destination="9pv-A4-QxB" eventType="valueChanged" id="Jhk-Eg-zCA"/>
@@ -258,11 +258,11 @@
                                             <constraint firstAttribute="width" constant="5" id="dQc-c7-DVm"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="izA-Du-3UJ">
-                                        <rect key="frame" x="86" y="24" width="429" height="429"/>
+                                    <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="izA-Du-3UJ">
+                                        <rect key="frame" x="85" y="24" width="430" height="429"/>
                                         <subviews>
-                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
-                                                <rect key="frame" x="1" y="0.0" width="429" height="429"/>
+                                            <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                                <rect key="frame" x="22" y="31" width="386" height="385"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ytn-Fa-pdN" secondAttribute="height" multiplier="1:1" id="M2I-qx-66f"/>
@@ -291,10 +291,12 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Ytn-Fa-pdN" firstAttribute="width" secondItem="izA-Du-3UJ" secondAttribute="width" priority="750" id="Rkb-cw-NyB"/>
+                                            <constraint firstItem="Ytn-Fa-pdN" firstAttribute="width" secondItem="izA-Du-3UJ" secondAttribute="width" multiplier="0.9" priority="750" id="60Y-EV-Ysi"/>
+                                            <constraint firstItem="Ytn-Fa-pdN" firstAttribute="width" relation="lessThanOrEqual" secondItem="izA-Du-3UJ" secondAttribute="width" multiplier="0.9" id="Rkb-cw-NyB"/>
                                             <constraint firstItem="Ytn-Fa-pdN" firstAttribute="centerX" secondItem="izA-Du-3UJ" secondAttribute="centerX" id="Vna-i1-d5i"/>
-                                            <constraint firstItem="Ytn-Fa-pdN" firstAttribute="height" secondItem="izA-Du-3UJ" secondAttribute="height" priority="750" id="gHf-SJ-EAi"/>
+                                            <constraint firstItem="Ytn-Fa-pdN" firstAttribute="height" secondItem="izA-Du-3UJ" secondAttribute="height" multiplier="0.9" priority="750" id="gHf-SJ-EAi"/>
                                             <constraint firstItem="Ytn-Fa-pdN" firstAttribute="centerY" secondItem="izA-Du-3UJ" secondAttribute="centerY" id="rjq-3x-cu0"/>
+                                            <constraint firstItem="Ytn-Fa-pdN" firstAttribute="height" relation="lessThanOrEqual" secondItem="izA-Du-3UJ" secondAttribute="height" multiplier="0.9" id="veA-Y9-j8s"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="800" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Tw7-BT-foO">
@@ -322,6 +324,9 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4I0-pC-9gf"/>
+                                        </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNd-rh-ePJ" userLabel="Spacer">
                                         <rect key="frame" x="298" y="531" width="5" height="0.0"/>
