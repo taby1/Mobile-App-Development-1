@@ -261,7 +261,7 @@
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="izA-Du-3UJ">
                                         <rect key="frame" x="66" y="24" width="429" height="429"/>
                                         <subviews>
-                                            <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="429" height="429"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>

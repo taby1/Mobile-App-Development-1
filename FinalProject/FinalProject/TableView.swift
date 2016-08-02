@@ -94,9 +94,9 @@ class TableView: UITableViewController, UITextFieldDelegate{
         }
     }
     
-    override func viewDidUnload(){
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
+//    override func viewDidUnload(){
+//        NSNotificationCenter.defaultCenter().removeObserver(self)
+//    }
     
     @IBAction func addName(sender: AnyObject) {
 		let defaultGrid = GridView()
@@ -110,6 +110,7 @@ class TableView: UITableViewController, UITextFieldDelegate{
         if let data = notification.userInfo, points = data["grid"] as? PointsContainer, name = data["name"] as? String{
             let tag = add(name)
             grids.savedGrids[tag] = points.points
+            NSNotificationCenter.defaultCenter().removeObserver(self)
         }
     }
     func add(name:String) -> Int{

@@ -22,6 +22,17 @@ struct Cell:Hashable{
 	var state:CellState{get{return _state}}
 }
 func ==(lhs:Cell, rhs:Cell) -> Bool{return (lhs.position == rhs.position) && (lhs.state == rhs.state)}
+struct Coordinates:Hashable{
+	init(row:Int, col:Int){
+		self.row = row
+		self.col = col
+	}
+	var row:Int
+	var col:Int
+	var hashValue: Int{get{return row * col}}
+}
+func ==(lhs:Coordinates, rhs:Coordinates) -> Bool{return (lhs.row == rhs.row) && (lhs.col == rhs.col)}
+func ==(lhs:Coordinates, rhs:Position) -> Bool{return (lhs.row == rhs.row) && (lhs.col == rhs.col)}
 
 enum CellState:Int{
 	case Living
@@ -134,22 +145,37 @@ class StandardEngine:EngineProtocol{
     }
 	
 	func step() -> GridProtocol{
-		var tempState:[Position] = []
-		self.grid.ofInterest.map{$0.state.isLiving() ? self.neighbors($0.position).map{tempState.append($0)} : []}
-		var livingNeighbors:[(pos:Position, num:Int)] = []
-		tempState.map{
-            let g = $0
-            if(livingNeighbors.reduce(0){$1.pos == g ? $0 + 1 : $0} == 0){ livingNeighbors.append(($0,numberIn($0, within:tempState)))}
-//			let g = $0
-//			tempState = tempState.filter{g != $0}
+//		var tempState:[Position] = []
+//		self.grid.ofInterest.map{$0.state.isLiving() ? self.neighbors($0.position).map{tempState.append($0)} : []}
+//		var livingNeighbors:[(pos:Position, num:Int)] = []
+//		tempState.map{
+//            let g = $0
+//            if(livingNeighbors.reduce(0){$1.pos == g ? $0 + 1 : $0} == 0){ livingNeighbors.append(($0,numberIn($0, within:tempState)))}
+//		}
+//		var newGrid = Grid(rows: self.rows, cols: self.cols)
+//		livingNeighbors.map{
+//			switch $0.num{
+//			case 2 where grid[$0.pos].isLiving(), 3 where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Living
+//			case 3 where !grid[$0.pos].isLiving(): newGrid[$0.pos] = .Born
+//			case _ where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Died
+//			default: newGrid[$0.pos] = .Empty
+//			}
+//		}
+        var nextGen:[Coordinates:Int] = [:]
+		grid.ofInterest.filter{$0.state.isLiving()}.map{	//iterates through living Cell()s
+			neighbors($0.position).map{	//for every living cell iterates through it's neighbors
+				let coords = Coordinates(row: $0.row, col: $0.col)
+				nextGen.keys.contains(coords) ? (nextGen[coords]! += 1) : (nextGen[coords] = 1)
+			}
 		}
-		var newGrid = Grid(rows: self.rows, cols: self.cols)
-		livingNeighbors.map{
-			switch $0.num{
-			case 2 where grid[$0.pos].isLiving(), 3 where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Living
-			case 3 where !grid[$0.pos].isLiving(): newGrid[$0.pos] = .Born
-			case _ where grid[$0.pos].isLiving(): newGrid[$0.pos] = .Died
-			default: newGrid[$0.pos] = .Empty
+		var newGrid:GridProtocol = Grid(rows: self.rows, cols: self.cols)
+		nextGen.map{
+			let currentPos = (row:$0.0.row, col:$0.0.col)
+			switch $0.1{
+			case 2 where grid[currentPos].isLiving(), 3 where grid[currentPos].isLiving(): newGrid[currentPos] = .Living
+			case 3 where !grid[currentPos].isLiving(): newGrid[currentPos] = .Born
+			case _ where grid[currentPos].isLiving(): newGrid[currentPos] = .Died
+			default: newGrid[currentPos] = .Empty
 			}
 		}
 		self.grid = newGrid
