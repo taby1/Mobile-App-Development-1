@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EU7-Gy-qvk">
-                                <rect key="frame" x="20" y="320" width="560" height="231"/>
+                                <rect key="frame" x="0.0" y="320" width="600" height="231"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UCR-um-rNJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="231"/>
+                                        <rect key="frame" x="20" y="0.0" width="560" height="231"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8S-y7-cLO" userLabel="Spacer">
                                                 <rect key="frame" x="278" y="0.0" width="5" height="0.0"/>
@@ -166,16 +166,16 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.45645703599999998" blue="0.0" alpha="0.1175199468" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.60904364222873864" green="1" blue="0.85147800615519909" alpha="0.1175199468" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="UCR-um-rNJ" firstAttribute="leading" secondItem="EU7-Gy-qvk" secondAttribute="leading" id="0CJ-gO-kGG"/>
-                                    <constraint firstAttribute="trailing" secondItem="UCR-um-rNJ" secondAttribute="trailing" id="CyC-Mq-ULt"/>
+                                    <constraint firstItem="UCR-um-rNJ" firstAttribute="leading" secondItem="EU7-Gy-qvk" secondAttribute="leading" constant="20" id="0CJ-gO-kGG"/>
+                                    <constraint firstAttribute="trailing" secondItem="UCR-um-rNJ" secondAttribute="trailing" constant="20" id="CyC-Mq-ULt"/>
                                     <constraint firstAttribute="bottom" secondItem="UCR-um-rNJ" secondAttribute="bottom" id="EUh-wL-pJ1"/>
                                     <constraint firstItem="UCR-um-rNJ" firstAttribute="top" secondItem="EU7-Gy-qvk" secondAttribute="top" id="G58-u7-t46"/>
-                                    <constraint firstAttribute="trailing" secondItem="UCR-um-rNJ" secondAttribute="trailing" id="aet-XW-raQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="UCR-um-rNJ" secondAttribute="trailing" constant="20" id="aet-XW-raQ"/>
                                     <constraint firstItem="UCR-um-rNJ" firstAttribute="top" secondItem="EU7-Gy-qvk" secondAttribute="top" id="ibU-fF-tMi"/>
                                     <constraint firstAttribute="bottom" secondItem="UCR-um-rNJ" secondAttribute="bottom" id="ngK-1D-Cx3"/>
-                                    <constraint firstItem="UCR-um-rNJ" firstAttribute="leading" secondItem="EU7-Gy-qvk" secondAttribute="leading" id="zOc-bb-WxI"/>
+                                    <constraint firstItem="UCR-um-rNJ" firstAttribute="leading" secondItem="EU7-Gy-qvk" secondAttribute="leading" constant="20" id="zOc-bb-WxI"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="rFc-ZO-9ez">
@@ -201,7 +201,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="EU7-Gy-qvk" secondAttribute="trailing" id="8zQ-kO-xjm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EU7-Gy-qvk" secondAttribute="trailing" constant="-20" id="8zQ-kO-xjm"/>
                             <constraint firstItem="EU7-Gy-qvk" firstAttribute="top" secondItem="AZE-9z-XBw" secondAttribute="bottom" id="AFC-Eb-XkJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AZE-9z-XBw" secondAttribute="trailing" constant="-20" id="DD0-Sl-HG3"/>
                             <constraint firstItem="AZE-9z-XBw" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="Jzd-Pe-4uN"/>
@@ -212,7 +212,7 @@
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="EU7-Gy-qvk" secondAttribute="bottom" id="ihH-L7-V65"/>
                             <constraint firstItem="rFc-ZO-9ez" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="lP1-Z2-hcU"/>
                             <constraint firstItem="AZE-9z-XBw" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="0.5" id="xq2-mu-BtP"/>
-                            <constraint firstItem="EU7-Gy-qvk" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="zNG-WH-dA3"/>
+                            <constraint firstItem="EU7-Gy-qvk" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="zNG-WH-dA3"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -220,7 +220,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Instrumentation" image="first" id="acW-dT-cKf" userLabel="Instrumentation"/>
+                    <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" selectedImage="Instrumentation" id="acW-dT-cKf" userLabel="Instrumentation"/>
                     <connections>
                         <outlet property="colDisplay" destination="s1k-KJ-l8F" id="A2U-lr-eRD"/>
                         <outlet property="colStepper" destination="8X0-7i-IBn" id="yr2-4Y-FML"/>
@@ -248,10 +248,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="nE5-NT-xBi">
-                                <rect key="frame" x="20" y="20" width="560" height="531"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-Yu-gO7" userLabel="Spacer">
-                                        <rect key="frame" x="278" y="0.0" width="5" height="0.0"/>
+                                        <rect key="frame" x="298" y="0.0" width="5" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="548-Mn-oJK"/>
@@ -259,10 +259,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="izA-Du-3UJ">
-                                        <rect key="frame" x="66" y="24" width="429" height="429"/>
+                                        <rect key="frame" x="86" y="24" width="429" height="429"/>
                                         <subviews>
-                                            <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="429" height="429"/>
+                                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-Fa-pdN" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                                <rect key="frame" x="1" y="0.0" width="429" height="429"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ytn-Fa-pdN" secondAttribute="height" multiplier="1:1" id="M2I-qx-66f"/>
@@ -275,16 +275,16 @@
                                                         <integer key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
-                                                        <color key="value" red="0.01239569569" green="1" blue="0.068773689580000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="value" red="0.0" green="1" blue="0.1107608194" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="value" red="0.76884271378708546" green="0.76884271378708546" blue="0.76884271378708546" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
-                                                        <color key="value" red="0.71429803309999995" green="1" blue="0.75562739830000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="value" red="0.55084730749999999" green="1" blue="0.55826884070000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
-                                                        <color key="value" red="0.95073216620000001" green="0.082806144250000005" blue="0.1195789008" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="value" red="0.95073216620000001" green="0.43283045232767919" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -298,7 +298,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="800" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Tw7-BT-foO">
-                                        <rect key="frame" x="108" y="477" width="344" height="30"/>
+                                        <rect key="frame" x="128" y="477" width="344" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6IR-zI-vgc">
                                                 <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
@@ -324,7 +324,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNd-rh-ePJ" userLabel="Spacer">
-                                        <rect key="frame" x="278" y="531" width="5" height="0.0"/>
+                                        <rect key="frame" x="298" y="531" width="5" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="3eS-BJ-Xrw"/>
@@ -341,11 +341,11 @@
                         <constraints>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="nE5-NT-xBi" secondAttribute="bottom" id="DJS-G3-kAH"/>
                             <constraint firstItem="nE5-NT-xBi" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="GKY-rD-Ein"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nE5-NT-xBi" secondAttribute="trailing" id="Lri-C7-eWK"/>
-                            <constraint firstItem="nE5-NT-xBi" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="XwN-Hy-x41"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nE5-NT-xBi" secondAttribute="trailing" constant="-20" id="Lri-C7-eWK"/>
+                            <constraint firstItem="nE5-NT-xBi" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-20" id="XwN-Hy-x41"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Simulation" image="second" id="cPa-gy-q4n" userLabel="Simulation"/>
+                    <tabBarItem key="tabBarItem" title="Simulation" image="Simulation" selectedImage="Simulation" id="cPa-gy-q4n" userLabel="Simulation"/>
                     <connections>
                         <outlet property="flowButton" destination="QNZ-QM-yqQ" id="dy4-DY-bNq"/>
                         <outlet property="gridView" destination="Ytn-Fa-pdN" id="G6E-KG-FX8"/>
@@ -430,10 +430,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vOZ-Pi-bcn">
-                                <rect key="frame" x="20" y="20" width="560" height="531"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lJ-zy-c2I" userLabel="Spacer">
-                                        <rect key="frame" x="278" y="0.0" width="5" height="0.0"/>
+                                        <rect key="frame" x="298" y="0.0" width="5" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="5" id="2Pg-xV-dgu"/>
@@ -441,31 +441,31 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Born: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtR-Hg-hcI">
-                                        <rect key="frame" x="257" y="89" width="46" height="21"/>
+                                        <rect key="frame" x="277" y="89" width="46" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Living " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYp-i7-cuM">
-                                        <rect key="frame" x="255" y="200" width="50" height="21"/>
+                                        <rect key="frame" x="275" y="200" width="50" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="754" text="Just Died: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3r-hg-NNF">
-                                        <rect key="frame" x="239" y="310" width="82" height="21"/>
+                                        <rect key="frame" x="259" y="310" width="82" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" text="Empty: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPb-N4-ltK">
-                                        <rect key="frame" x="251" y="421" width="58" height="21"/>
+                                        <rect key="frame" x="271" y="421" width="58" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AiS-gq-wtS" userLabel="Spacer">
-                                        <rect key="frame" x="278" y="531" width="5" height="0.0"/>
+                                        <rect key="frame" x="298" y="531" width="5" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="5pi-UY-RAO"/>
@@ -479,11 +479,11 @@
                         <constraints>
                             <constraint firstItem="vOZ-Pi-bcn" firstAttribute="top" secondItem="1Nw-tT-6kc" secondAttribute="bottom" id="5HE-tG-iHE"/>
                             <constraint firstItem="OXz-SN-9Dh" firstAttribute="top" secondItem="vOZ-Pi-bcn" secondAttribute="bottom" id="MX8-kX-ecb"/>
-                            <constraint firstItem="vOZ-Pi-bcn" firstAttribute="leading" secondItem="VHp-XV-O3y" secondAttribute="leadingMargin" id="gsf-vE-TCF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="vOZ-Pi-bcn" secondAttribute="trailing" id="mg9-gH-5Lf"/>
+                            <constraint firstItem="vOZ-Pi-bcn" firstAttribute="leading" secondItem="VHp-XV-O3y" secondAttribute="leadingMargin" constant="-20" id="gsf-vE-TCF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vOZ-Pi-bcn" secondAttribute="trailing" constant="-20" id="mg9-gH-5Lf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" id="qhg-ON-WZj"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="Statistics" selectedImage="Statistics" id="qhg-ON-WZj"/>
                     <connections>
                         <outlet property="bornLabel" destination="BtR-Hg-hcI" id="PlO-Gd-C4h"/>
                         <outlet property="diedLabel" destination="J3r-hg-NNF" id="zcq-mO-GtZ"/>
@@ -624,16 +624,16 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
-                                                <color key="value" red="0.0" green="1" blue="0.075668181784514399" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.0" green="1" blue="0.11076081941033822" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" red="0.76884271380000002" green="0.76884271380000002" blue="0.76884271380000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
-                                                <color key="value" red="0.47491681349729553" green="1" blue="0.71794852592669889" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.55084730745943655" green="1" blue="0.55826884069224458" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
-                                                <color key="value" red="1" green="0.0" blue="0.081942766766834652" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="value" red="0.95073216620000001" green="0.4328304523" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cols">
                                                 <integer key="value" value="5"/>
@@ -795,8 +795,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="Instrumentation" width="30" height="30"/>
+        <image name="Simulation" width="30" height="30"/>
+        <image name="Statistics" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qe7-tk-EfJ"/>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +16,43 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXP-X9-63s">
+                                <rect key="frame" x="135" y="255" width="331" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icons from: http://www.iconbeast.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbN-4v-EQt">
+                                        <rect key="frame" x="20" y="49" width="291" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Icon Drawn by Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfe-dD-98o">
+                                        <rect key="frame" x="79" y="20" width="173" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FbN-4v-EQt" secondAttribute="trailing" constant="20" id="5oB-2O-7ee"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jfe-dD-98o" secondAttribute="trailing" constant="79" id="B6d-D9-ghL"/>
+                                    <constraint firstItem="Jfe-dD-98o" firstAttribute="centerX" secondItem="eXP-X9-63s" secondAttribute="centerX" id="GRr-xM-Xfp"/>
+                                    <constraint firstAttribute="height" constant="90" id="JU8-JA-6qY"/>
+                                    <constraint firstItem="Jfe-dD-98o" firstAttribute="leading" secondItem="eXP-X9-63s" secondAttribute="leading" constant="79" id="SvH-bg-MhM"/>
+                                    <constraint firstItem="Jfe-dD-98o" firstAttribute="top" secondItem="eXP-X9-63s" secondAttribute="top" constant="20" id="Us3-ml-bQt"/>
+                                    <constraint firstAttribute="width" constant="331" id="WEm-0S-3qs"/>
+                                    <constraint firstItem="FbN-4v-EQt" firstAttribute="leading" secondItem="eXP-X9-63s" secondAttribute="leading" constant="20" id="iEl-HR-Jkz"/>
+                                    <constraint firstAttribute="bottom" secondItem="FbN-4v-EQt" secondAttribute="bottom" constant="20" id="kda-du-rPL"/>
+                                    <constraint firstItem="FbN-4v-EQt" firstAttribute="centerX" secondItem="eXP-X9-63s" secondAttribute="centerX" id="rZ4-YN-GU9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eXP-X9-63s" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="G5G-4S-FQI"/>
+                            <constraint firstItem="eXP-X9-63s" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="r5K-SM-Zbl"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

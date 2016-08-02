@@ -146,7 +146,7 @@ class StandardEngine:EngineProtocol{
 	
 	func step() -> GridProtocol{
         var nextGen:[Coordinates:Int] = [:]
-		grid.ofInterest.filter{$0.state.isLiving()}.map{	//iterates through living Cell()s
+		(grid.ofInterest.filter{$0.state.isLiving()}).map{	//iterates through living Cell()s
 			neighbors($0.position).map{	//for every living cell iterates through it's neighbors
 				let coords = Coordinates(row: $0.row, col: $0.col)
 				nextGen.keys.contains(coords) ? (nextGen[coords]! += 1) : (nextGen[coords] = 1)
